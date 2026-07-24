@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>OpenClaw Config Editor</title>
+<style>
+:root {
+  --bg: #1a1a2e;
+  --bg2: #16213e;
+  --bg3: #2a2a4a;
+  --bg4: #3a3a5a;
+  --text: #e0e0e0;
+  --text2: #a0a0c0;
+  --accent: #6c63ff;
+  --accent2: #7b73ff;
+  --danger: #ff4757;
+  --success: #2ed573;
+  --border: #3a3a5a;
+  --radius: 8px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background: var(--bg); color: var(--text); display: flex; flex-direction: column;
+  height: 100dvh;
+}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
+
+.topbar {
+  display: flex; align-items: center; gap: 10px; padding: 10px 16px;
+  background: var(--bg2); border-bottom: 1px solid var(--border); flex-shrink: 0;
+}
+.topbar h1 { font-size: 16px; font-weight: 700; white-space: nowrap; }
+.topbar .badge { font-size: 11px; color: var(--text2); padding: 2px 8px; background: var(--bg3); border-radius: 10px; }
+.topbar .spacer { flex: 1; }
+.topbar button {
+  padding: 6px 14px; border: none; border-radius: var(--radius); cursor: pointer;
+  font-size: 12px; font-weight: 600; white-space: nowrap;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent2); }
+.btn-success { background: var(--success); color: #fff; }
+.btn-danger { background: var(--danger); color: #fff; }
+.btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
+.btn-outline:hover { background: var(--bg3); }
+.btn-sm { padding: 4px 8px; font-size: 11px; }
+
+.app { display: flex; flex: 1; }
+
+.sidebar {
+  width: 220px; min-width: 220px; background: var(--bg2); border-right: 1px solid var(--border);
+  display: flex; flex-direction: column; flex-shrink: 0;
+}
+.sidebar-header { display: flex; align-items: center; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+.sidebar-header h3 { font-size: 13px; font-weight: 600; flex: 1; }
+.sidebar-list { flex: 1; overflow-y: auto; padding: 4px 0; }
+.sidebar .item {
+  display: flex; align-items: center; gap: 6px; padding: 8px 12px; cursor: pointer;
+  font-size: 12px; border-left: 3px solid transparent; transition: .1s;
+}
+.sidebar .item:hover { background: var(--bg3); }
+.sidebar .item.active { background: var(--bg3); border-left-color: var(--accent); }
+.sidebar .item .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sidebar .item .del { opacity: .4; cursor: pointer; font-size: 14px; padding: 0 2px; }
+.sidebar .item .del:hover { opacity: 1; color: var(--danger); }
+
+.content { flex: 1; display: flex; flex-direction: column; padding: 16px 20px; }
+
+.tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--border); margin-bottom: 12px; flex-shrink: 0; overflow-x: auto; }
+.tabs::-webkit-scrollbar { height: 0; }
+.tab-btn {
+  padding: 8px 16px; border: none; background: transparent; color: var(--text2); cursor: pointer;
+  font-size: 13px; border-bottom: 2px solid transparent; white-space: nowrap; transition: .1s;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-content { flex: 1; display: none; flex-direction: column; gap: 12px; }
+.tab-content.active { display: flex; }
+
+.card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); }
+.card-header {
+  display: flex; align-items: center; gap: 8px; padding: 10px 12px;
+  background: var(--bg3); font-size: 13px; font-weight: 600; border-radius: var(--radius) var(--radius) 0 0;
+}
+.card-body { padding: 12px; }
+
+.field { margin-bottom: 10px; }
+.field label { display: block; font-size: 11px; font-weight: 600; margin-bottom: 4px; color: var(--text2); }
+.field input, .field textarea, .field select {
+  width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--bg); color: var(--text); font-size: 13px; outline: none;
+}
+.field input:focus, .field textarea:focus { border-color: var(--accent); }
+.field-row { display: flex; gap: 10px; }
+.field-row > .field { flex: 1; }
+
+.combobox { position: relative; }
+.combobox input { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--bg); color: var(--text); font-size: 13px; outline: none; }
+.combobox input:focus { border-color: var(--accent); }
+.combobox .dropdown {
+  position: absolute; top: 100%; left: 0; right: 0; z-index: 999; display: none;
+  background: var(--bg2); border: 1px solid var(--border); border-radius: 0 0 var(--radius) var(--radius);
+  max-height: 200px; overflow-y: auto;
+}
+.combobox .dropdown.open { display: block; }
+.combobox .dropdown .cb-item {
+  padding: 6px 10px; cursor: pointer; font-size: 12px; color: var(--text);
+}
+.combobox .dropdown .cb-item:hover { background: var(--bg3); }
+.combobox .dropdown .cb-item.selected { background: var(--accent); color: #fff; }
+.combobox .dropdown .empty { padding: 6px 10px; color: var(--text2); font-size: 12px; }
+
+/* Models list */
+.models-list { display: flex; flex-direction: column; gap: 2px; }
+.model-row {
+  display: flex; align-items: center; gap: 8px; padding: 8px 10px;
+  background: var(--bg3); border-radius: 4px; font-size: 12px; cursor: pointer;
+  transition: background .1s;
+}
+.model-row:hover { background: var(--bg4); }
+.model-row .mid { font-family: monospace; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.model-row .mname { color: var(--text2); font-size: 11px; min-width: 120px; }
+.model-row .mbadge { font-size: 10px; padding: 1px 6px; border-radius: 8px; background: var(--accent); color: #fff; }
+.model-row .mactions { display: flex; gap: 4px; flex-shrink: 0; }
+.model-row .mactions button {
+  background: none; border: none; cursor: pointer; font-size: 14px; padding: 2px 4px; color: var(--text2);
+}
+.model-row .mactions button:hover { color: var(--accent); }
+.model-row .mactions button.del-btn:hover { color: var(--danger); }
+
+.checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0; }
+.checkbox-group label { display: flex; align-items: center; gap: 4px; font-size: 11px; cursor: pointer; }
+.checkbox-group input[type="checkbox"] { width: auto; }
+
+.fallback-list { display: flex; flex-direction: column; gap: 4px; margin: 6px 0; }
+.fallback-item {
+  display: flex; align-items: center; gap: 6px; padding: 6px 8px;
+  background: var(--bg3); border-radius: 4px; font-size: 12px;
+}
+.fallback-item .model { flex: 1; font-family: monospace; font-size: 11px; word-break: break-all; }
+.fallback-item .arrows { display: flex; gap: 2px; flex-shrink: 0; }
+.fallback-item .arrows button {
+  background: none; border: none; cursor: pointer; font-size: 16px; padding: 2px 6px; color: var(--text2); line-height: 1;
+}
+.fallback-item .arrows button:disabled { opacity: .3; cursor: default; }
+.fallback-item .arrows button:not(:disabled):hover { color: var(--accent); }
+.fallback-item .del { cursor: pointer; padding: 0 4px; font-size: 14px; color: var(--text2); flex-shrink: 0; }
+.fallback-item .del:hover { color: var(--danger); }
+
+.binding-section { background: var(--bg3); border-radius: var(--radius); margin-bottom: 10px; overflow: hidden; }
+.binding-section h4 { font-size: 13px; cursor: pointer; padding: 10px 12px; display: flex; align-items: center; gap: 6px; user-select: none; margin: 0; }
+.binding-section h4 .arrow { transition: transform .2s; font-size: 10px; }
+.binding-section h4 .arrow.collapsed { transform: rotate(-90deg); }
+.binding-section .section-body { padding: 12px; }
+.binding-section .section-body.collapsed { display: none; }
+.binding-section .section-body .field { margin-bottom: 12px; }
+.binding-section .section-body .fallback-list { margin: 8px 0; }
+
+textarea { resize: vertical; min-height: 60px; font-family: monospace; font-size: 12px; }
+
+.flex { display: flex; align-items: center; gap: 8px; }
+.text-muted { color: var(--text2); font-size: 11px; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,.6);
+  display: none; align-items: center; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+  width: 95vw; max-width: 560px; max-height: 90vh; display: flex; flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0,0,0,.4);
+}
+.modal-header {
+  display: flex; align-items: center; gap: 8px; padding: 14px 16px;
+  border-bottom: 1px solid var(--border); flex-shrink: 0;
+}
+.modal-header h3 { font-size: 14px; flex: 1; }
+.modal-header .close-btn { background: none; border: none; color: var(--text2); font-size: 20px; cursor: pointer; }
+.modal-header .close-btn:hover { color: var(--danger); }
+.modal-body { padding: 16px; overflow-y: auto; flex: 1; }
+.modal-footer { display: flex; gap: 10px; justify-content: flex-end; padding: 14px 16px; border-top: 1px solid var(--border); flex-shrink: 0; }
+.modal-footer button {
+  padding: 8px 20px; border: none; border-radius: var(--radius); cursor: pointer;
+  font-size: 13px; font-weight: 600; transition: all .2s;
+}
+.modal-footer .btn-cancel {
+  background: var(--bg3); color: var(--text2); border: 1px solid var(--border);
+}
+.modal-footer .btn-cancel:hover { background: var(--bg4); color: var(--text); }
+.modal-footer .btn-save {
+  background: linear-gradient(135deg, var(--accent), #8b7bff); color: #fff;
+  box-shadow: 0 2px 8px rgba(108,99,255,.3);
+}
+.modal-footer .btn-save:hover { box-shadow: 0 4px 12px rgba(108,99,255,.5); transform: translateY(-1px); }
+
+.toast {
+  position: fixed; bottom: 20px; right: 20px; z-index: 2000;
+  padding: 10px 18px; border-radius: var(--radius); font-size: 13px; font-weight: 600;
+  color: #fff; opacity: 0; transition: opacity .3s; pointer-events: none;
+}
+.toast.show { opacity: 1; }
+.toast.success { background: var(--success); }
+.toast.error { background: var(--danger); }
+
+.field-error { border-color: var(--danger) !important; }
+.error-text { color: var(--danger); font-size: 10px; margin-top: 2px; }
+
+@media (max-width: 768px) {
+  .topbar { flex-wrap: wrap; gap: 6px; padding: 8px; }
+  .topbar .badge { display: none; }
+  .topbar button { padding: 5px 10px; font-size: 11px; }
+  .app { flex-direction: column; }
+  .sidebar { width: 100%; min-width: 0; max-height: 100px; border-right: none; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .sidebar-header { flex-shrink: 0; }
+  .sidebar-list { display: flex; overflow-x: auto; padding: 0; }
+  .sidebar .item { border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; flex-shrink: 0; }
+  .sidebar .item.active { border-bottom-color: var(--accent); border-left-color: transparent; }
+  .sidebar .item .del { display: none; }
+  .content { padding: 12px; }
+  .field-row { flex-direction: column; }
+  .model-row .mname { display: none; }
+  .modal { width: 98vw; max-height: 95vh; }
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <h1>⚙️ OpenClaw Config</h1>
+  <span class="spacer"></span>
+  <span class="badge" id="modelCount"></span>
+  <span class="badge" id="agentCount"></span>
+  <button class="btn-outline" onclick="loadConfig(true)">📥 Загрузить</button>
+  <button class="btn-success" onclick="saveAndDeploy()">🚀 Обновить</button>
+</div>
+<div class="app">
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <h3>Провайдеры</h3>
+      <button class="btn-sm btn-primary" onclick="openProviderModal(null)" title="Добавить провайдер">+</button>
+    </div>
+    <div class="sidebar-list" id="providerList"></div>
+  </div>
+  <div class="content">
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="providers" onclick="switchTab('providers')">🌐 Провайдеры</button>
+      <button class="tab-btn" data-tab="agentModels" onclick="switchTab('agentModels')">🤖 Модели агентов</button>
+      <button class="tab-btn" data-tab="bindings" onclick="switchTab('bindings')">🔗 Привязка</button>
+      <button class="tab-btn" data-tab="general" onclick="switchTab('general')">⚙️ Общие</button>
+    </div>
+    <div class="tab-content active" id="tab-providers"></div>
+    <div class="tab-content" id="tab-agentModels"></div>
+    <div class="tab-content" id="tab-bindings"></div>
+    <div class="tab-content" id="tab-general"></div>
+  </div>
+</div>
+
+<!-- Provider Edit Modal -->
+<div class="modal-overlay" id="providerModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="providerModalTitle">Провайдер</h3>
+      <button class="close-btn" onclick="closeProviderModal()">×</button>
+    </div>
+    <div class="modal-body" id="providerModalBody"></div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeProviderModal()">Отмена</button>
+      <button class="btn-save" onclick="saveProviderFromModal()">💾 Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<!-- Model Edit Modal -->
+<div class="modal-overlay" id="modelModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modelModalTitle">Модель</h3>
+      <button class="close-btn" onclick="closeModelModal()">×</button>
+    </div>
+    <div class="modal-body" id="modelModalBody"></div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModelModal()">Отмена</button>
+      <button class="btn-save" onclick="saveModelFromModal()">💾 Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let config = null;
+let selectedProvider = null;
+let remoteModels = [];
+let editingModelIdx = -1; // -1 = new model
+
+// ===== TOAST =====
+function toast(msg, type='success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  setTimeout(() => t.className = 'toast', 2500);
+}
+
+// ===== API =====
+async function api(action, extra) {
+  const body = { action, ...(extra||{}) };
+  const r = await fetch('api.php', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) });
+  return r.json();
+}
+
+// Cookie helpers (3 hours = 10800 seconds)
+const SYNC_COOKIE = 'openclaw_last_sync';
+const SYNC_INTERVAL = 10800; // 3 hours
+
+function getCookie(name) {
+  const m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+  return m ? decodeURIComponent(m[1]) : null;
+}
+
+function setCookie(name, value, seconds) {
+  document.cookie = name + '=' + encodeURIComponent(value) + ';path=/;max-age=' + seconds;
+}
+
+function needsSync() {
+  const last = getCookie(SYNC_COOKIE);
+  if (!last) return true;
+  const elapsed = Math.floor(Date.now() / 1000) - parseInt(last, 10);
+  return elapsed >= SYNC_INTERVAL;
+}
+
+// Load config (from local project file; sync from live only if needed)
+async function loadConfig(fromLive) {
+  try {
+    if (fromLive === true || needsSync()) {
+      // Request sync from live → project
+      await api('requestLoad');
+      setTimeout(async () => {
+        await doLoad();
+        setCookie(SYNC_COOKIE, Math.floor(Date.now() / 1000), 86400);
+        toast('Конфиг загружен из live');
+      }, 1500);
+    } else {
+      // Load from project file
+      await doLoad();
+      toast('Конфиг загружен');
+    }
+  } catch(e) { toast('Ошибка загрузки: '+e.message, 'error'); }
+}
+
+async function doLoad() {
+  const cfg = await api('getConfig');
+  config = cfg;
+  if (config?.models?.providers) {
+    const keys = Object.keys(config.models.providers);
+    if (keys.length > 0 && !selectedProvider) selectedProvider = keys[0];
+  }
+  renderAll();
+  fetchRemoteModels();
+}
+
+async function saveConfig(silent) {
+  if (!config) return;
+  try {
+    const r = await api('saveConfig', { config });
+    if (r.success && !silent) toast('Сохранено!');
+    else if (!r.success) toast('Ошибка: '+(r.error||'unknown'), 'error');
+  } catch(e) { if (!silent) toast('Ошибка сохранения: '+e.message, 'error'); }
+}
+
+async function saveAndDeploy() {
+  if (!config) return;
+  try {
+    const r = await api('requestSave', { config });
+    if (r.success) toast('Сохранено и синхронизировано!');
+    else toast('Ошибка: '+(r.error||'unknown'), 'error');
+  } catch(e) { toast('Ошибка: '+e.message, 'error'); }
+}
+
+async function fetchRemoteModels() {
+  try {
+    const r = await api('fetchModels');
+    if (r.data) remoteModels = r.data;
+    else if (Array.isArray(r)) remoteModels = r;
+  } catch(e) { console.error('Failed to fetch remote models', e); }
+}
+
+// ===== УТИЛИТЫ =====
+function escapeHtml(s) { if (s == null) return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function parseModelName(id) {
+  if (!id) return '';
+  const parts = id.split('/');
+  const lastPart = parts[parts.length - 1];
+  const firstPart = parts[0];
+  const cap = s => s.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  const name = cap(lastPart);
+  if (parts.length > 1) {
+    const prefix = cap(firstPart);
+    return `${name} ${prefix}`;
+  }
+  return name;
+}
+
+function getAllModelIds() {
+  const models = [];
+  if (!config?.models?.providers) return models;
+  for (const [pid, p] of Object.entries(config.models.providers)) {
+    if (p.models) for (const m of p.models) {
+      if (m.id) models.push(pid + '/' + m.id);
+    }
+  }
+  return models.sort();
+}
+
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.tab-btn[data-tab="${name}"]`).classList.add('active');
+  document.getElementById(`tab-${name}`).classList.add('active');
+}
+
+// ===== COMBOBOX =====
+function createCombobox(options, selected, onSelect, placeholder) {
+  const wrap = document.createElement('div');
+  wrap.className = 'combobox';
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = selected || '';
+  input.placeholder = placeholder || 'Выберите или введите...';
+  const dropdown = document.createElement('div');
+  dropdown.className = 'dropdown';
+
+  function renderDropdown(filter) {
+    dropdown.innerHTML = '';
+    const f = (filter || '').toLowerCase();
+    const filtered = options.filter(o => o.toLowerCase().includes(f));
+    if (filtered.length === 0) {
+      dropdown.innerHTML = '<div class="empty">Не найдено</div>';
+    } else {
+      filtered.forEach(o => {
+        const div = document.createElement('div');
+        div.className = 'cb-item' + (o === selected ? ' selected' : '');
+        div.textContent = o;
+        div.onclick = () => {
+          input.value = o;
+          dropdown.classList.remove('open');
+          if (onSelect) onSelect(o);
+        };
+        dropdown.appendChild(div);
+      });
+    }
+  }
+
+  input.addEventListener('focus', () => { renderDropdown(input.value); dropdown.classList.add('open'); });
+  input.addEventListener('input', () => { renderDropdown(input.value); dropdown.classList.add('open'); if (onSelect) onSelect(input.value); });
+  document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) dropdown.classList.remove('open'); });
+
+  wrap.appendChild(input);
+  wrap.appendChild(dropdown);
+  return wrap;
+}
+
+// ===== RENDER ALL =====
+function renderAll() {
+  if (!config) return;
+  updateCounts();
+  renderProviderList();
+  renderProvidersTab();
+  renderAgentModelsTab();
+  renderBindingsTab();
+  renderGeneralTab();
+}
+
+function updateCounts() {
+  const pcount = config.models?.providers ? Object.keys(config.models.providers).length : 0;
+  const acount = config.agents?.list ? config.agents.list.length : 0;
+  document.getElementById('modelCount').textContent = `📡 ${pcount} провайдеров`;
+  document.getElementById('agentCount').textContent = `🤖 ${acount} агентов`;
+}
+
+// ===== PROVIDER LIST =====
+function renderProviderList() {
+  const list = document.getElementById('providerList');
+  list.innerHTML = '';
+  if (!config?.models?.providers) return;
+  // NO sorting — preserve file order
+  const providers = Object.keys(config.models.providers);
+  providers.forEach(pid => {
+    const div = document.createElement('div');
+    div.className = 'item' + (pid === selectedProvider ? ' active' : '');
+    div.innerHTML = `<span class="name">${escapeHtml(pid)}</span><span class="del" title="Удалить">×</span>`;
+    div.querySelector('.name').onclick = () => { selectedProvider = pid; renderAll(); };
+    div.querySelector('.del').onclick = (e) => { e.stopPropagation(); deleteProvider(pid); };
+    list.appendChild(div);
+  });
+}
+
+function deleteProvider(pid) {
+  if (!confirm(`Удалить провайдер "${pid}"?`)) return;
+  delete config.models.providers[pid];
+  if (selectedProvider === pid) {
+    const keys = Object.keys(config.models.providers);
+    selectedProvider = keys.length > 0 ? keys[0] : null;
+  }
+  renderAll();
+  saveConfig();
+}
+
+function editSelectedProvider() {
+  if (selectedProvider) openProviderModal(selectedProvider);
+}
+
+// ===== PROVIDER MODAL =====
+function openProviderModal(pid) {
+  const isNew = !pid;
+  const p = isNew ? { baseUrl: '', api: 'openai-completions', apiKey: '', timeoutSeconds: 60, models: [] } : config.models.providers[pid];
+  if (!p) return;
+
+  document.getElementById('providerModalTitle').textContent = isNew ? '➕ Новый провайдер' : '✏️ ' + pid;
+  const body = document.getElementById('providerModalBody');
+  body.innerHTML = '';
+
+  // ID field (only for new, or editable for existing)
+  const fId = mkField('ID провайдера *', 'text', pid || '', v => {});
+  if (!isNew) {
+    fId.querySelector('input').disabled = true;
+    fId.querySelector('input').style.opacity = '0.6';
+  }
+  body.appendChild(fId);
+
+  body.appendChild(mkField('Base URL', 'text', p.baseUrl || '', v => { p.baseUrl = v; }));
+  body.appendChild(mkField('API', 'text', p.api || '', v => { p.api = v; }));
+  body.appendChild(mkField('API Key', 'text', p.apiKey || '', v => { p.apiKey = v; }));
+  body.appendChild(mkField('Timeout (сек)', 'number', p.timeoutSeconds || 60, v => { p.timeoutSeconds = parseInt(v) || 60; }));
+
+  body._providerId = pid;
+  body._providerData = p;
+  body._isNew = isNew;
+  document.getElementById('providerModal').classList.add('open');
+}
+
+function closeProviderModal() {
+  document.getElementById('providerModal').classList.remove('open');
+}
+
+function saveProviderFromModal() {
+  const body = document.getElementById('providerModalBody');
+  const isNew = body._isNew;
+  const p = body._providerData;
+
+  const idInput = body.querySelector('input');
+  const pid = idInput.value.trim();
+
+  if (!pid) {
+    idInput.classList.add('field-error');
+    toast('ID провайдера обязателен', 'error');
+    return;
+  }
+
+  if (isNew) {
+    if (config.models.providers[pid]) {
+      idInput.classList.add('field-error');
+      toast('Провайдер уже существует', 'error');
+      return;
+    }
+    config.models.providers[pid] = p;
+    selectedProvider = pid;
+  }
+
+  closeProviderModal();
+  saveConfig(true);
+  renderAll();
+  toast(isNew ? 'Провайдер создан' : 'Провайдер сохранён');
+}
+
+// ===== PROVIDERS TAB =====
+function renderProvidersTab() {
+  const tab = document.getElementById('tab-providers');
+  if (!selectedProvider || !config?.models?.providers?.[selectedProvider]) {
+    tab.innerHTML = '<div class="text-muted" style="padding:20px">Нет провайдеров</div>';
+    return;
+  }
+  const p = config.models.providers[selectedProvider];
+  tab.innerHTML = '';
+
+  // Models list card with provider edit button
+  const modelsCard = document.createElement('div');
+  modelsCard.className = 'card';
+  const headerHtml = `<div class="card-header" style="display:flex;align-items:center;gap:8px"><span style="flex:1">📦 ${escapeHtml(selectedProvider)} — ${p.models ? p.models.length : 0} моделей</span><button class="btn-sm btn-outline" onclick="openProviderModal('${escapeHtml(selectedProvider)}')" title="Редактировать провайдер">✏️</button><button class="btn-sm btn-primary" onclick="openModelModal(-1)">+ Добавить</button></div>`;
+  modelsCard.innerHTML = headerHtml + '<div class="card-body"><div class="models-list" id="modelsList"></div></div>';
+  tab.appendChild(modelsCard);
+
+  renderModelsList();
+}
+
+function mkField(label, type, value, onChange) {
+  const f = document.createElement('div'); f.className = 'field';
+  f.innerHTML = `<label>${label}</label>`;
+  const i = document.createElement('input'); i.type = type; i.value = value;
+  i.onchange = () => onChange(i.value);
+  f.appendChild(i);
+  return f;
+}
+
+function renderModelsList() {
+  const container = document.getElementById('modelsList');
+  if (!container) return;
+  container.innerHTML = '';
+  const p = config.models.providers[selectedProvider];
+  if (!p.models || p.models.length === 0) {
+    container.innerHTML = '<div class="text-muted">Нет моделей</div>';
+    return;
+  }
+  p.models.forEach((model, idx) => {
+    const row = document.createElement('div');
+    row.className = 'model-row';
+    row.onclick = () => openModelModal(idx);
+
+    const mid = document.createElement('span');
+    mid.className = 'mid';
+    mid.textContent = model.id || '(без ID)';
+    row.appendChild(mid);
+
+    const mname = document.createElement('span');
+    mname.className = 'mname';
+    mname.textContent = model.name || '';
+    row.appendChild(mname);
+
+    if (model.reasoning) {
+      const badge = document.createElement('span');
+      badge.className = 'mbadge';
+      badge.textContent = '🧠';
+      badge.title = 'Reasoning';
+      row.appendChild(badge);
+    }
+
+    const actions = document.createElement('div');
+    actions.className = 'mactions';
+
+    const editBtn = document.createElement('button');
+    editBtn.textContent = '✏️';
+    editBtn.title = 'Редактировать';
+    editBtn.onclick = (e) => { e.stopPropagation(); openModelModal(idx); };
+    actions.appendChild(editBtn);
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'del-btn';
+    delBtn.textContent = '🗑️';
+    delBtn.title = 'Удалить';
+    delBtn.onclick = (e) => {
+      e.stopPropagation();
+      if (!confirm(`Удалить модель "${model.id}"?`)) return;
+      p.models.splice(idx, 1);
+      syncDefaultsModels();
+      saveConfig(true);
+      renderAll();
+    };
+    actions.appendChild(delBtn);
+
+    row.appendChild(actions);
+    container.appendChild(row);
+  });
+}
+
+// ===== MODEL MODAL =====
+function openModelModal(idx) {
+  editingModelIdx = idx;
+  const p = config.models.providers[selectedProvider];
+  const isNew = idx === -1;
+  const model = isNew ? { id: '', name: '', input: ['text'] } : JSON.parse(JSON.stringify(p.models[idx]));
+
+  document.getElementById('modelModalTitle').textContent = isNew ? 'Добавить модель' : 'Редактировать модель';
+
+  const body = document.getElementById('modelModalBody');
+  body.innerHTML = '';
+
+  // ID
+  const fId = document.createElement('div'); fId.className = 'field';
+  fId.innerHTML = '<label>ID модели *</label>';
+  const remoteIds = remoteModels.map(m => m.id || '').filter(Boolean);
+  const combo = createCombobox(remoteIds, model.id, (val) => {
+    model.id = val;
+    if (!model.name || model._autoName) {
+      model.name = parseModelName(val);
+      model._autoName = true;
+      // Update name field if it exists
+      const ni = body.querySelector('#modalName');
+      if (ni) { ni.value = model.name; ni.dataset.auto = '1'; }
+    }
+  }, 'ID модели...');
+  combo.querySelector('input').id = 'modalId';
+  combo.querySelector('input').addEventListener('input', () => {
+    model.id = combo.querySelector('input').value;
+    if (!model.name || model._autoName) {
+      model.name = parseModelName(model.id);
+      model._autoName = true;
+      const ni = body.querySelector('#modalName');
+      if (ni) { ni.value = model.name; ni.dataset.auto = '1'; }
+    }
+  });
+  fId.appendChild(combo);
+  body.appendChild(fId);
+
+  // Name
+  const fName = document.createElement('div'); fName.className = 'field';
+  fName.innerHTML = '<label>Название *</label>';
+  const iName = document.createElement('input'); iName.type = 'text'; iName.id = 'modalName';
+  iName.value = model.name || '';
+  iName.dataset.auto = model._autoName ? '1' : '0';
+  iName.addEventListener('input', () => {
+    model.name = iName.value;
+    model._autoName = false;
+    iName.dataset.auto = '0';
+  });
+  fName.appendChild(iName);
+  body.appendChild(fName);
+
+  // Context + MaxTokens
+  const row1 = document.createElement('div'); row1.className = 'field-row';
+  const fCtx = mkField('Context Window', 'number', model.contextWindow || '', v => { model.contextWindow = v ? parseInt(v) : undefined; });
+  const fMax = mkField('Max Tokens', 'number', model.maxTokens || '', v => { model.maxTokens = v ? parseInt(v) : undefined; });
+  row1.appendChild(fCtx);
+  row1.appendChild(fMax);
+  body.appendChild(row1);
+
+  // Reasoning
+  const fReason = document.createElement('div'); fReason.className = 'field';
+  fReason.style.display = 'flex'; fReason.style.alignItems = 'center'; fReason.style.gap = '8px';
+  const reasonLabel = document.createElement('label');
+  reasonLabel.style.margin = '0';
+  const reasonCb = document.createElement('input'); reasonCb.type = 'checkbox'; reasonCb.style.width = 'auto';
+  reasonCb.checked = !!model.reasoning;
+  reasonCb.onchange = () => { model.reasoning = reasonCb.checked || undefined; };
+  reasonLabel.appendChild(reasonCb);
+  reasonLabel.appendChild(document.createTextNode(' Reasoning'));
+  fReason.appendChild(reasonLabel);
+  body.appendChild(fReason);
+
+  // Input types — only text and image
+  const fInput = document.createElement('div'); fInput.className = 'field';
+  fInput.innerHTML = '<label>Input Types</label>';
+  const inputGroup = document.createElement('div'); inputGroup.className = 'checkbox-group';
+  const currentInput = model.input || ['text'];
+  ['text', 'image'].forEach(t => {
+    const lbl = document.createElement('label');
+    const cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = currentInput.includes(t);
+    cb.onchange = () => {
+      const arr = [...(model.input || ['text'])];
+      if (cb.checked && !arr.includes(t)) arr.push(t);
+      if (!cb.checked) { const i = arr.indexOf(t); if (i >= 0) arr.splice(i, 1); }
+      model.input = arr;
+    };
+    lbl.appendChild(cb);
+    lbl.appendChild(document.createTextNode(t));
+    inputGroup.appendChild(lbl);
+  });
+  fInput.appendChild(inputGroup);
+  body.appendChild(fInput);
+
+  // Cost — checkbox + textarea
+  const fCost = document.createElement('div'); fCost.className = 'field';
+  const costLabel = document.createElement('label');
+  costLabel.style.display = 'flex'; costLabel.style.alignItems = 'center'; costLabel.style.gap = '6px';
+  const costCb = document.createElement('input'); costCb.type = 'checkbox'; costCb.style.width = 'auto';
+  costCb.checked = !!model.cost;
+  costLabel.appendChild(costCb);
+  costLabel.appendChild(document.createTextNode(' Cost'));
+  fCost.appendChild(costLabel);
+
+  const costTa = document.createElement('textarea');
+  costTa.rows = 4;
+  costTa.style.marginTop = '4px';
+  costTa.value = model.cost ? JSON.stringify(model.cost, null, 2) : JSON.stringify({ input: 0, output: 0, cacheRead: 0, cacheWrite: 0 }, null, 2);
+  costTa.disabled = !model.cost;
+  costCb.onchange = () => { costTa.disabled = !costCb.checked; };
+  fCost.appendChild(costTa);
+  body.appendChild(fCost);
+
+  // Compat — checkboxes + textarea
+  const fCompat = document.createElement('div'); fCompat.className = 'field';
+  fCompat.innerHTML = '<label>Compat</label>';
+  const currentCompat = model.compat || {};
+
+  // Textarea first (auto-generated from checkboxes)
+  const compatTa = document.createElement('textarea');
+  compatTa.rows = 6;
+  compatTa.readOnly = true;
+  compatTa.value = JSON.stringify(currentCompat, null, 2);
+  fCompat.appendChild(compatTa);
+
+  // Checkboxes container
+  const compatChecks = document.createElement('div');
+  compatChecks.style.marginTop = '8px';
+
+  // Boolean compat keys
+  const boolKeys = [
+    'supportsReasoningEffort', 'supportsUsageInStreaming', 'supportsStrictMode',
+    'supportsDeveloperRole', 'supportsResponseFormat', 'supportsPrediction',
+    'supportsAudioOutput', 'supportsSystemPrefix'
+  ];
+  const compatBoolGroup = document.createElement('div'); compatBoolGroup.className = 'checkbox-group';
+  boolKeys.forEach(k => {
+    const lbl = document.createElement('label');
+    const cb = document.createElement('input'); cb.type = 'checkbox'; cb.style.width = 'auto';
+    cb.checked = currentCompat[k] === true;
+    cb.onchange = () => { updateCompatFromCheckboxes(); };
+    cb.dataset.compatKey = k;
+    cb.dataset.compatType = 'bool';
+    lbl.appendChild(cb); lbl.appendChild(document.createTextNode(k));
+    compatBoolGroup.appendChild(lbl);
+  });
+  compatChecks.appendChild(compatBoolGroup);
+
+  // maxTokensField — single select
+  const mfLabel = document.createElement('label');
+  mfLabel.style.cssText = 'display:block;font-size:10px;font-weight:600;color:var(--text2);margin:6px 0 2px';
+  mfLabel.textContent = 'maxTokensField';
+  compatChecks.appendChild(mfLabel);
+  const maxFieldOpts = ['max_tokens', 'max_completion_tokens', 'max_output_tokens'];
+  const maxFieldGroup = document.createElement('div'); maxFieldGroup.className = 'checkbox-group';
+  maxFieldOpts.forEach(opt => {
+    const lbl = document.createElement('label');
+    const cb = document.createElement('input'); cb.type = 'checkbox'; cb.style.width = 'auto';
+    cb.checked = currentCompat.maxTokensField === opt;
+    cb.dataset.compatKey = 'maxTokensField';
+    cb.dataset.compatValue = opt;
+    cb.dataset.compatType = 'single';
+    cb.onchange = () => {
+      maxFieldGroup.querySelectorAll('input').forEach(other => { if (other !== cb) other.checked = false; });
+      updateCompatFromCheckboxes();
+    };
+    lbl.appendChild(cb); lbl.appendChild(document.createTextNode(opt));
+    maxFieldGroup.appendChild(lbl);
+  });
+  compatChecks.appendChild(maxFieldGroup);
+
+  // thinkingFormat — single select
+  const tfLabel = document.createElement('label');
+  tfLabel.style.cssText = 'display:block;font-size:10px;font-weight:600;color:var(--text2);margin:6px 0 2px';
+  tfLabel.textContent = 'thinkingFormat';
+  compatChecks.appendChild(tfLabel);
+  const thinkOpts = ['openai', 'openrouter', 'deepseek', 'together', 'qwen', 'qwen-chat-template', 'zai'];
+  const thinkGroup = document.createElement('div'); thinkGroup.className = 'checkbox-group';
+  thinkOpts.forEach(opt => {
+    const lbl = document.createElement('label');
+    const cb = document.createElement('input'); cb.type = 'checkbox'; cb.style.width = 'auto';
+    cb.checked = currentCompat.thinkingFormat === opt;
+    cb.dataset.compatKey = 'thinkingFormat';
+    cb.dataset.compatValue = opt;
+    cb.dataset.compatType = 'single';
+    cb.onchange = () => {
+      thinkGroup.querySelectorAll('input').forEach(other => { if (other !== cb) other.checked = false; });
+      updateCompatFromCheckboxes();
+    };
+    lbl.appendChild(cb); lbl.appendChild(document.createTextNode(opt));
+    thinkGroup.appendChild(lbl);
+  });
+  compatChecks.appendChild(thinkGroup);
+
+  // supportedReasoningEfforts — multi select
+  const efLabel = document.createElement('label');
+  efLabel.style.cssText = 'display:block;font-size:10px;font-weight:600;color:var(--text2);margin:6px 0 2px';
+  efLabel.textContent = 'supportedReasoningEfforts';
+  compatChecks.appendChild(efLabel);
+  const effortOpts = ['low', 'medium', 'high', 'xhigh'];
+  const curEfforts = currentCompat.supportedReasoningEfforts || [];
+  const effortGroup = document.createElement('div'); effortGroup.className = 'checkbox-group';
+  effortOpts.forEach(opt => {
+    const lbl = document.createElement('label');
+    const cb = document.createElement('input'); cb.type = 'checkbox'; cb.style.width = 'auto';
+    cb.checked = curEfforts.includes(opt);
+    cb.dataset.compatKey = 'supportedReasoningEfforts';
+    cb.dataset.compatValue = opt;
+    cb.dataset.compatType = 'multi';
+    cb.onchange = () => { updateCompatFromCheckboxes(); };
+    lbl.appendChild(cb); lbl.appendChild(document.createTextNode(opt));
+    effortGroup.appendChild(lbl);
+  });
+  compatChecks.appendChild(effortGroup);
+  fCompat.appendChild(compatChecks);
+
+  // Build compat object from checkboxes
+  function updateCompatFromCheckboxes() {
+    const obj = {};
+    compatBoolGroup.querySelectorAll('input[data-compat-type="bool"]').forEach(cb => {
+      if (cb.checked) obj[cb.dataset.compatKey] = true;
+    });
+    compatChecks.querySelectorAll('input[data-compat-type="single"]').forEach(cb => {
+      if (cb.checked) obj[cb.dataset.compatKey] = cb.dataset.compatValue;
+    });
+    const efforts = [];
+    compatChecks.querySelectorAll('input[data-compat-type="multi"]').forEach(cb => {
+      if (cb.checked) efforts.push(cb.dataset.compatValue);
+    });
+    if (efforts.length > 0) obj.supportedReasoningEfforts = efforts;
+    compatTa.value = JSON.stringify(obj, null, 2);
+  }
+
+  body.appendChild(fCompat);
+
+  // Store temp model data
+  body._modelData = model;
+  body._costCb = costCb;
+  body._costTa = costTa;
+  body._compatTa = compatTa;
+
+  document.getElementById('modelModal').classList.add('open');
+}
+
+function closeModelModal() {
+  document.getElementById('modelModal').classList.remove('open');
+  editingModelIdx = -1;
+}
+
+function saveModelFromModal() {
+  const body = document.getElementById('modelModalBody');
+  const model = body._modelData;
+  const costCb = body._costCb;
+  const costTa = body._costTa;
+  const compatTa = body._compatTa;
+
+  // Validate required fields
+  const idInput = body.querySelector('#modalId');
+  const nameInput = body.querySelector('#modalName');
+  let hasError = false;
+
+  idInput.classList.remove('field-error');
+  nameInput.classList.remove('field-error');
+  // Remove old errors
+  body.querySelectorAll('.error-text').forEach(e => e.remove());
+
+  if (!model.id || !model.id.trim()) {
+    idInput.classList.add('field-error');
+    const err = document.createElement('div'); err.className = 'error-text'; err.textContent = 'ID обязателен';
+    idInput.parentElement.appendChild(err);
+    hasError = true;
+  }
+  if (!model.name || !model.name.trim()) {
+    nameInput.classList.add('field-error');
+    const err = document.createElement('div'); err.className = 'error-text'; err.textContent = 'Название обязательно';
+    nameInput.parentElement.appendChild(err);
+    hasError = true;
+  }
+
+  // Parse cost JSON
+  if (costCb.checked) {
+    try {
+      model.cost = JSON.parse(costTa.value);
+    } catch(e) {
+      costTa.classList.add('field-error');
+      toast('Ошибка в JSON Cost', 'error');
+      return;
+    }
+  } else {
+    delete model.cost;
+  }
+
+  // Parse compat from auto-generated textarea
+  try {
+    const parsed = JSON.parse(compatTa.value);
+    if (typeof parsed === 'object' && parsed !== null && Object.keys(parsed).length > 0) {
+      model.compat = parsed;
+    } else {
+      delete model.compat;
+    }
+  } catch(e) {
+    delete model.compat;
+  }
+
+  if (hasError) return;
+
+  // Save
+  const p = config.models.providers[selectedProvider];
+  if (!p.models) p.models = [];
+
+  if (editingModelIdx === -1) {
+    p.models.push(model);
+  } else {
+    p.models[editingModelIdx] = model;
+  }
+
+  syncDefaultsModels();
+  saveConfig(true);
+  closeModelModal();
+  renderAll();
+  toast('Модель сохранена');
+}
+
+function syncDefaultsModels() {
+  if (!config?.models?.providers || !config?.agents?.defaults?.models) return;
+  const known = {};
+  for (const [pid, p] of Object.entries(config.models.providers)) {
+    if (p.models) for (const m of p.models) {
+      if (m.id) known[pid + '/' + m.id] = true;
+    }
+  }
+  const dm = config.agents.defaults.models;
+  for (const key of Object.keys(dm)) {
+    if (!known[key]) delete dm[key];
+  }
+  for (const key of Object.keys(known)) {
+    if (!(key in dm)) dm[key] = {};
+  }
+}
+
+// ===== AGENT MODELS TAB =====
+function renderAgentModelsTab() {
+  const tab = document.getElementById('tab-agentModels');
+  tab.innerHTML = '';
+
+  if (!config?.agents?.defaults?.models) {
+    tab.innerHTML = '<div class="text-muted">Нет данных</div>';
+    return;
+  }
+
+  const models = config.agents.defaults.models;
+  const modelKeys = Object.keys(models); // preserve order
+
+  let filtered = modelKeys;
+  if (selectedProvider) {
+    filtered = modelKeys.filter(k => k.startsWith(selectedProvider + '/'));
+  }
+
+  const info = document.createElement('div');
+  info.className = 'text-muted';
+  info.style.padding = '4px 0';
+  info.textContent = selectedProvider
+    ? `Модели провайдера "${selectedProvider}" (${filtered.length})`
+    : `Все модели (${filtered.length}). Выберите провайдера слева для фильтрации.`;
+  tab.appendChild(info);
+
+  filtered.forEach(key => {
+    const div = document.createElement('div');
+    div.className = 'fallback-item';
+    div.innerHTML = `<span class="model">${escapeHtml(key)}</span>`;
+    const delBtn = document.createElement('span');
+    delBtn.className = 'del';
+    delBtn.textContent = '×';
+    delBtn.title = 'Удалить из списка';
+    delBtn.onclick = () => {
+      delete config.agents.defaults.models[key];
+      saveConfig(true);
+      renderAgentModelsTab();
+    };
+    div.appendChild(delBtn);
+    tab.appendChild(div);
+  });
+}
+
+// ===== BINDINGS TAB =====
+function renderBindingsTab() {
+  const tab = document.getElementById('tab-bindings');
+  tab.innerHTML = '';
+
+  const allModels = getAllModelIds();
+  if (allModels.length === 0) {
+    tab.innerHTML = '<div class="text-muted">Нет доступных моделей.</div>';
+    return;
+  }
+
+  // Defaults
+  const defSection = document.createElement('div');
+  defSection.className = 'binding-section';
+  const defH4 = document.createElement('h4');
+  defH4.innerHTML = `<span class="arrow">▼</span> 🎯 Модели по-умолчанию`;
+  defSection.appendChild(defH4);
+
+  const defBody = document.createElement('div');
+  defBody.className = 'section-body';
+  defH4.onclick = () => {
+    defBody.classList.toggle('collapsed');
+    defH4.querySelector('.arrow').classList.toggle('collapsed');
+  };
+
+  const defModel = config.agents.defaults.model || { primary: '', fallbacks: [] };
+  config.agents.defaults.model = defModel;
+  if (!defModel.fallbacks || defModel.fallbacks.length === 0) defModel.fallbacks = [''];
+
+  const fPrimary = document.createElement('div'); fPrimary.className = 'field';
+  fPrimary.innerHTML = '<label>Основная модель</label>';
+  fPrimary.appendChild(createCombobox(allModels, defModel.primary, (val) => { defModel.primary = val; saveConfig(true); }, 'Выберите...'));
+  defBody.appendChild(fPrimary);
+
+  const fFbLabel = document.createElement('div');
+  fFbLabel.innerHTML = '<label style="font-size:11px;font-weight:600;color:var(--text2)">Fallbacks</label>';
+  defBody.appendChild(fFbLabel);
+  renderFallbackList(defBody, defModel, allModels);
+  defSection.appendChild(defBody);
+  tab.appendChild(defSection);
+
+  // Agents
+  if (!config.agents.list) config.agents.list = [];
+  const agents = config.agents.list.filter(a => !(a.runtime && a.runtime.type === 'acp'));
+
+  agents.forEach((agent, idx) => {
+    const aSection = document.createElement('div');
+    aSection.className = 'binding-section';
+
+    const h4 = document.createElement('h4');
+    h4.innerHTML = `<span class="arrow">▼</span> 🤖 ${escapeHtml(agent.id || 'agent-' + idx)}`;
+    aSection.appendChild(h4);
+
+    const body = document.createElement('div');
+    body.className = 'section-body collapsed';
+    h4.onclick = () => {
+      body.classList.toggle('collapsed');
+      h4.querySelector('.arrow').classList.toggle('collapsed');
+    };
+
+    if (!agent.model) agent.model = { primary: '', fallbacks: [] };
+    if (!agent.model.fallbacks || agent.model.fallbacks.length === 0) agent.model.fallbacks = [''];
+
+    const fP = document.createElement('div'); fP.className = 'field';
+    fP.innerHTML = '<label>Основная модель</label>';
+    fP.appendChild(createCombobox(allModels, agent.model.primary, (val) => { agent.model.primary = val; saveConfig(true); }, 'Выберите...'));
+    body.appendChild(fP);
+
+    const fFbL = document.createElement('div');
+    fFbL.innerHTML = '<label style="font-size:11px;font-weight:600;color:var(--text2)">Fallbacks</label>';
+    body.appendChild(fFbL);
+    renderFallbackList(body, agent.model, allModels);
+    aSection.appendChild(body);
+    tab.appendChild(aSection);
+  });
+}
+
+function renderFallbackList(container, modelObj, allModels) {
+  if (!modelObj.fallbacks) modelObj.fallbacks = [];
+
+  const listDiv = document.createElement('div');
+  listDiv.className = 'fallback-list';
+
+  modelObj.fallbacks.forEach((fb, i) => {
+    const item = document.createElement('div');
+    item.className = 'fallback-item';
+
+    const modelSpan = document.createElement('span');
+    modelSpan.className = 'model';
+    modelSpan.textContent = fb || '(пусто)';
+    item.appendChild(modelSpan);
+
+    const arrows = document.createElement('div');
+    arrows.className = 'arrows';
+
+    const upBtn = document.createElement('button');
+    upBtn.textContent = '▲';
+    upBtn.disabled = i === 0;
+    upBtn.onclick = () => {
+      [modelObj.fallbacks[i-1], modelObj.fallbacks[i]] = [modelObj.fallbacks[i], modelObj.fallbacks[i-1]];
+      saveConfig(true);
+      renderBindingsTab();
+    };
+    arrows.appendChild(upBtn);
+
+    const downBtn = document.createElement('button');
+    downBtn.textContent = '▼';
+    downBtn.disabled = i === modelObj.fallbacks.length - 1;
+    downBtn.onclick = () => {
+      [modelObj.fallbacks[i], modelObj.fallbacks[i+1]] = [modelObj.fallbacks[i+1], modelObj.fallbacks[i]];
+      saveConfig(true);
+      renderBindingsTab();
+    };
+    arrows.appendChild(downBtn);
+    item.appendChild(arrows);
+
+    const delBtn = document.createElement('span');
+    delBtn.className = 'del';
+    delBtn.textContent = '×';
+    delBtn.onclick = () => {
+      if (modelObj.fallbacks.length <= 1) { toast('Минимум 1 fallback', 'error'); return; }
+      modelObj.fallbacks.splice(i, 1);
+      saveConfig(true);
+      renderBindingsTab();
+    };
+    item.appendChild(delBtn);
+
+    listDiv.appendChild(item);
+  });
+
+  container.appendChild(listDiv);
+
+  // Add
+  const addWrap = document.createElement('div');
+  addWrap.style.display = 'flex';
+  addWrap.style.gap = '6px';
+  addWrap.style.alignItems = 'center';
+  addWrap.style.marginTop = '6px';
+
+  const addCombo = createCombobox(allModels, '', null, 'Добавить fallback...');
+  addCombo.style.flex = '1';
+  addWrap.appendChild(addCombo);
+
+  const addBtn = document.createElement('button');
+  addBtn.className = 'btn-sm btn-primary';
+  addBtn.textContent = '+';
+  addBtn.onclick = () => {
+    const input = addCombo.querySelector('input');
+    const val = input.value.trim();
+    if (!val) return;
+    if (modelObj.fallbacks.includes(val)) { toast('Уже в списке', 'error'); return; }
+    modelObj.fallbacks.push(val);
+    input.value = '';
+    saveConfig(true);
+    renderBindingsTab();
+  };
+  addWrap.appendChild(addBtn);
+  container.appendChild(addWrap);
+}
+
+// ===== GENERAL TAB =====
+function renderGeneralTab() {
+  const tab = document.getElementById('tab-general');
+  tab.innerHTML = '';
+  const defaults = config.agents.defaults;
+
+  // Thinking
+  const fThink = document.createElement('div'); fThink.className = 'field';
+  fThink.innerHTML = '<label>Thinking Default</label>';
+  const thinkGroup = document.createElement('div'); thinkGroup.className = 'checkbox-group';
+  ['off', 'low', 'medium', 'high', 'xhigh'].forEach(opt => {
+    const lbl = document.createElement('label');
+    const cb = document.createElement('input'); cb.type = 'checkbox';
+    cb.checked = defaults.thinkingDefault === opt;
+    cb.onchange = () => { if (cb.checked) { defaults.thinkingDefault = opt; saveConfig(true); renderGeneralTab(); } };
+    lbl.appendChild(cb); lbl.appendChild(document.createTextNode(opt));
+    thinkGroup.appendChild(lbl);
+  });
+  fThink.appendChild(thinkGroup);
+  tab.appendChild(fThink);
+
+  // Reasoning
+  const fReason = document.createElement('div'); fReason.className = 'field';
+  fReason.innerHTML = '<label>Reasoning Default</label>';
+  const reasonGroup = document.createElement('div'); reasonGroup.className = 'checkbox-group';
+  ['off', 'stream', 'inline'].forEach(opt => {
+    const lbl = document.createElement('label');
+    const cb = document.createElement('input'); cb.type = 'checkbox';
+    cb.checked = defaults.reasoningDefault === opt;
+    cb.onchange = () => { if (cb.checked) { defaults.reasoningDefault = opt; saveConfig(true); renderGeneralTab(); } };
+    lbl.appendChild(cb); lbl.appendChild(document.createTextNode(opt));
+    reasonGroup.appendChild(lbl);
+  });
+  fReason.appendChild(reasonGroup);
+  tab.appendChild(fReason);
+
+  // Workspace
+  tab.appendChild(mkField('Workspace', 'text', defaults.workspace || '', v => { defaults.workspace = v; saveConfig(true); }));
+
+  // Timeout
+  tab.appendChild(mkField('Timeout (сек)', 'number', defaults.timeoutSeconds || '', v => { if (v) defaults.timeoutSeconds = parseInt(v); else delete defaults.timeoutSeconds; saveConfig(true); }));
+
+  // Heartbeat
+  const fHb = document.createElement('div'); fHb.className = 'field';
+  fHb.innerHTML = '<label>Heartbeat</label>';
+  const iHb = document.createElement('input'); iHb.type = 'text';
+  iHb.value = defaults.heartbeat?.every || '';
+  iHb.onchange = () => { if (!defaults.heartbeat) defaults.heartbeat = {}; defaults.heartbeat.every = iHb.value || '0m'; saveConfig(true); };
+  fHb.appendChild(iHb);
+  tab.appendChild(fHb);
+
+  // Subagents card
+  const subCard = document.createElement('div');
+  subCard.className = 'card';
+  subCard.innerHTML = '<div class="card-header">🔀 Subagents</div><div class="card-body"></div>';
+  const subBody = subCard.querySelector('.card-body');
+  const sub = defaults.subagents || {};
+  defaults.subagents = sub;
+
+  const fSubModel = document.createElement('div'); fSubModel.className = 'field';
+  fSubModel.innerHTML = '<label>Модель субагентов</label>';
+  fSubModel.appendChild(createCombobox(getAllModelIds(), sub.model || '', (val) => { sub.model = val; saveConfig(true); }, 'Выберите...'));
+  subBody.appendChild(fSubModel);
+
+  const subRow = document.createElement('div'); subRow.className = 'field-row';
+  [['maxConcurrent', 'Max Concurrent'], ['maxSpawnDepth', 'Max Spawn Depth'], ['maxChildrenPerAgent', 'Max Children']].forEach(([key, label]) => {
+    const f = document.createElement('div'); f.className = 'field';
+    f.innerHTML = `<label>${label}</label>`;
+    const i = document.createElement('input'); i.type = 'number'; i.value = sub[key] || '';
+    i.onchange = () => { if (i.value) sub[key] = parseInt(i.value); else delete sub[key]; saveConfig(true); };
+    f.appendChild(i);
+    subRow.appendChild(f);
+  });
+  subBody.appendChild(subRow);
+  tab.appendChild(subCard);
+}
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+  loadConfig(); // checks cookie, syncs from live only if needed
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,2776 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "/root/.openclaw/workspace",
+      "models": {
+        "agnes-ai-com/agnes-2.0-flash": {},
+        "alibaba/deepseek-v4-flash": {},
+        "alibaba/deepseek-v4-pro": {},
+        "alibaba/glm-5.2": {},
+        "alibaba/kimi-k2.7-code": {},
+        "alibaba/qwen3-coder-plus": {},
+        "alibaba/qwen3.5-plus": {},
+        "alibaba/qwen3.6-plus": {},
+        "alibaba/qwen3.7-max": {},
+        "alibaba/qwen3.7-plus": {},
+        "bazaarlink-ai/deepseek/deepseek-v4-flash": {},
+        "huggingface/deepseek-ai/DeepSeek-R1": {},
+        "huggingface/deepseek-ai/DeepSeek-V3.1": {},
+        "huggingface/meta-llama/Llama-3.3-70B-Instruct-Turbo": {},
+        "huggingface/openai/gpt-oss-120b": {},
+        "kiroproxy/claude-sonnet-4.5": {},
+        "mistral/mistral-large-latest": {},
+        "mistral/mistral-medium-3-5": {},
+        "nvidia/deepseek-ai/deepseek-v4-flash": {},
+        "nvidia/deepseek-ai/deepseek-v4-pro": {},
+        "nvidia/minimaxai/minimax-m3": {},
+        "nvidia/nvidia/nemotron-3-super-120b-a12b": {},
+        "nvidia/nvidia/nemotron-3-ultra-550b-a55b": {},
+        "nvidia/z-ai/glm-5.2": {},
+        "omniroute/af/kimi-k2.6-thinking": {},
+        "omniroute/af/moonshot/kimi-k2.6": {},
+        "omniroute/agnes/agnes-2.0-flash": {},
+        "omniroute/alltokens/alltokens/free": {},
+        "omniroute/api-orcarouter-ai/deepseek/deepseek-v4-pro": {},
+        "omniroute/api-orcarouter-ai/orcarouter/free": {},
+        "omniroute/api-orcarouter-ai/qwen/qwen3.5-flash": {},
+        "omniroute/bzl/deepseek-v4-flash": {},
+        "omniroute/fmd/gpt-5.5": {},
+        "omniroute/gemini/gemini-3.5-flash": {},
+        "omniroute/glmt/glm-5.2-max": {},
+        "omniroute/hf/deepseek-ai/DeepSeek-V4-Flash": {},
+        "omniroute/kie-ai/gpt-5-6-terra": {},
+        "omniroute/kr/claude-sonnet-4.5": {},
+        "omniroute/llmgateway/claude-haiku-4-5-free": {},
+        "omniroute/maxplus/claude-sonnet-5": {},
+        "omniroute/mimo/mimo-v2.5": {},
+        "omniroute/mimo/mimo-v2.5-pro": {},
+        "omniroute/nvidia/deepseek-ai/deepseek-v4-flash": {},
+        "omniroute/nvidia/deepseek-ai/deepseek-v4-pro": {},
+        "omniroute/nvidia/minimaxai/minimax-m3": {},
+        "omniroute/nvidia/z-ai/glm-5.2": {},
+        "omniroute/ofox/z-ai/glm-4.7-flash:free": {},
+        "omniroute/opencode-zen/deepseek-v4-flash-free": {},
+        "omniroute/opencode-zen/mimo-v2.5-free": {},
+        "omniroute/opencode-zen/nemotron-3-ultra-free": {},
+        "omniroute/openrouter/openrouter/free": {},
+        "omniroute/requesty/deepseek/deepseek-v4-pro": {},
+        "omniroute/requesty/xiaomi/mimo-v2.5-pro": {},
+        "omniroute/tokenlayer/claude-sonnet-5": {},
+        "omniroute/tokenlayer/gpt-5.6-sol": {},
+        "omniroute/unc/Lorbus/Qwen3.6-27B-int4-AutoRound": {},
+        "omniroute/vertex/gemini-3.5-flash": {},
+        "omniroute/zm/grok-4.5-free": {},
+        "omniroute/zm/x-ai/grok-4.5-free": {},
+        "omniroute/zm/z-ai/glm-4.7-flash-free": {},
+        "opencode/deepseek-v4-flash-free": {},
+        "opencode/mimo-v2.5-free": {},
+        "qwen/deepseek-v4-flash": {},
+        "qwen/deepseek-v4-pro": {},
+        "qwen/glm-5.2": {},
+        "qwen/kimi-k2.7-code": {},
+        "qwen/qwen3-coder-plus": {},
+        "qwen/qwen3.5-plus": {},
+        "qwen/qwen3.6-plus": {},
+        "qwen/qwen3.7-max": {},
+        "qwen/qwen3.7-plus": {},
+        "sensenova/sensenova-6.7-flash-lite": {},
+        "stepfun/step-3.5-flash": {},
+        "stepfun/step-3.5-flash-2603": {},
+        "stepfun/step-3.7-flash": {},
+        "tokenrouter-com/MiniMax-M3": {},
+        "tokenrouter-com/deepseek/deepseek-v4-flash": {},
+        "tokenrouter-com/deepseek/deepseek-v4-pro": {},
+        "tokenrouter-com/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free": {},
+        "tokenrouter-com/qwen/qwen3-coder-next": {},
+        "tokenrouter-com/qwen/qwen3.5-flash": {},
+        "tokenrouter-com/x-ai/grok-4.1-fast": {},
+        "tokenrouter-com/z-ai/glm-5.2": {},
+        "tokenrouter-com/z-ai/glm-5.2-free": {},
+        "xiaomi/mimo-v2.5": {},
+        "xiaomi/mimo-v2.5-pro": {}
+      },
+      "model": {
+        "primary": "omniroute/opencode-zen/deepseek-v4-flash-free",
+        "fallbacks": [
+          "omniroute/bzl/deepseek-v4-flash",
+          "cline-cli/deepseek/deepseek-v4-flash",
+          "tokenrouter-com/deepseek/deepseek-v4-flash"
+        ]
+      },
+      "memorySearch": {
+        "provider": "local"
+      },
+      "imageGenerationModel": {
+        "primary": "google/gemini-3.1-flash-image",
+        "timeoutMs": 180000,
+        "fallbacks": [
+          "fal/fal-ai/flux/dev",
+          "alibaba/qwen-image-3.0-pro",
+          "omniroute/gemini/gemini-3.1-flash-image",
+          "agnes-ai-com/agnes-image-2.1-flash",
+          "sensenova/sensenova-u1-fast"
+        ]
+      },
+      "videoGenerationModel": {
+        "primary": "alibaba/wan2.7-r2v-2026-06-12",
+        "timeoutMs": 180000,
+        "fallbacks": [
+          "alibaba/wan2.7-t2v",
+          "alibaba/happyhorse-1.1-t2v"
+        ]
+      },
+      "thinkingDefault": "xhigh",
+      "reasoningDefault": "stream",
+      "contextPruning": {
+        "mode": "cache-ttl",
+        "ttl": "5m"
+      },
+      "compaction": {
+        "keepRecentTokens": 20000,
+        "memoryFlush": {
+          "enabled": true
+        }
+      },
+      "heartbeat": {
+        "every": "0m"
+      },
+      "subagents": {
+        "model": "tokenrouter-com/qwen/qwen3.5-flash",
+        "maxConcurrent": 4,
+        "maxSpawnDepth": 2,
+        "maxChildrenPerAgent": 5,
+        "runTimeoutSeconds": 3555,
+        "archiveAfterMinutes": 60,
+        "delegationMode": "suggest"
+      },
+      "cliBackends": {
+        "cline-cli": {
+          "command": "cline",
+          "args": [
+            "--json",
+            "--thinking",
+            "xhigh",
+            "--auto-approve",
+            "true",
+            "{prompt}"
+          ],
+          "output": "json",
+          "sessionMode": "none",
+          "modelAliases": {
+            "deepseek-v4-flash": "deepseek/deepseek-v4-flash"
+          }
+        },
+        "cmd-cli": {
+          "command": "/root/.openclaw/plugins/cmd-cli/cmd-wrapper.sh",
+          "args": [
+            "-p",
+            "{prompt}",
+            "--continue",
+            "--yolo",
+            "--skip-onboarding",
+            "--max-turns",
+            "10"
+          ],
+          "output": "text",
+          "input": "arg",
+          "modelArg": "-m",
+          "sessionMode": "none",
+          "systemPromptWhen": "never",
+          "modelAliases": {
+            "mimo-v2.5-pro": "xiaomi/mimo-v2.5-pro",
+            "GLM-5.2": "zai-org/GLM-5.2",
+            "deepseek-v4-pro": "deepseek/deepseek-v4-pro",
+            "MiniMax-M3": "MiniMaxAI/MiniMax-M3"
+          },
+          "serialize": true
+        }
+      },
+      "timeoutSeconds": 1200
+    },
+    "list": [
+      {
+        "id": "main",
+        "subagents": {
+          "allowAgents": [
+            "analyst",
+            "developer",
+            "creative",
+            "trader",
+            "risk",
+            "proger",
+            "signal",
+            "engineer"
+          ]
+        },
+        "groupChat": {
+          "mentionPatterns": [
+            "@gelych_openclaw_bot",
+            "Мастер"
+          ]
+        },
+        "model": {
+          "primary": "cmd-cli/mimo-v2.5-pro",
+          "fallbacks": [
+            "omniroute/requesty/xiaomi/mimo-v2.5-pro",
+            "xiaomi/mimo-v2.5-pro",
+            "opencode-go/mimo-v2.5-pro"
+          ]
+        }
+      },
+      {
+        "id": "analyst",
+        "name": "analyst",
+        "groupChat": {
+          "mentionPatterns": [
+            "@gelych_openclaw_analitics_bot",
+            "Скаут"
+          ]
+        },
+        "workspace": "/root/.openclaw/workspace-agents/analyst",
+        "agentDir": "/root/.openclaw/agents/analyst/agent",
+        "model": {
+          "primary": "opencode/mimo-v2.5-free",
+          "fallbacks": [
+            "omniroute/opencode-zen/mimo-v2.5-free",
+            "opencode-go/mimo-v2.5"
+          ]
+        }
+      },
+      {
+        "id": "developer",
+        "name": "developer",
+        "subagents": {
+          "model": "opencode/mimo-v2.5-free",
+          "allowAgents": [
+            "analyst",
+            "signal",
+            "creative",
+            "risk"
+          ]
+        },
+        "groupChat": {
+          "mentionPatterns": [
+            "@gelych_openclaw_delelop_bot",
+            "Кодер"
+          ]
+        },
+        "workspace": "/root/.openclaw/workspace-agents/developer",
+        "agentDir": "/root/.openclaw/agents/developer/agent",
+        "model": {
+          "primary": "omniroute/api-orcarouter-ai/deepseek/deepseek-v4-pro",
+          "fallbacks": [
+            "opencode-go/deepseek-v4-pro",
+            "tokenrouter-com/deepseek/deepseek-v4-pro",
+            "cmd-cli/deepseek-v4-pro",
+            "huggingface/deepseek-ai/DeepSeek-V4-Pro"
+          ]
+        }
+      },
+      {
+        "id": "creative",
+        "name": "creative",
+        "groupChat": {
+          "mentionPatterns": [
+            "@gelych_openclaw_creative_bot",
+            "Креатор"
+          ]
+        },
+        "workspace": "/root/.openclaw/workspace-agents/creative",
+        "agentDir": "/root/.openclaw/agents/creative/agent",
+        "model": {
+          "primary": "omniroute/fmd/gpt-5.5",
+          "fallbacks": [
+            "omniroute/zm/x-ai/grok-4.5-free",
+            "omniroute/zm/grok-4.5-free"
+          ]
+        }
+      },
+      {
+        "id": "trader",
+        "name": "trader",
+        "groupChat": {
+          "mentionPatterns": [
+            "@gelych_openclaw_trading_bot",
+            "Трейдер"
+          ]
+        },
+        "workspace": "/root/.openclaw/workspace-agents/trader",
+        "agentDir": "/root/.openclaw/agents/trader/agent",
+        "model": {
+          "primary": "omniroute/af/kimi-k2.6-thinking",
+          "fallbacks": [
+            "omniroute/af/moonshot/kimi-k2.6",
+            "opencode-go/kimi-k2.6",
+            "tokenrouter-com/MiniMax-M3"
+          ]
+        }
+      },
+      {
+        "id": "risk",
+        "name": "risk",
+        "groupChat": {
+          "mentionPatterns": [
+            "@gelych_openclaw_risk_bot",
+            "Рон"
+          ]
+        },
+        "workspace": "/root/.openclaw/workspace-agents/risk",
+        "agentDir": "/root/.openclaw/agents/risk/agent",
+        "model": {
+          "primary": "omniroute/api-orcarouter-ai/orcarouter/free",
+          "fallbacks": [
+            "cline-cli/deepseek/deepseek-v4-flash",
+            "bazaarlink-ai/deepseek/deepseek-v4-flash"
+          ]
+        }
+      },
+      {
+        "id": "proger",
+        "name": "proger",
+        "subagents": {
+          "model": "omniroute/opencode-zen/mimo-v2.5-free",
+          "allowAgents": [
+            "analyst",
+            "signal",
+            "creative",
+            "risk"
+          ]
+        },
+        "groupChat": {
+          "mentionPatterns": [
+            "@gelych_openclaw_proger_bot",
+            "Прогер"
+          ]
+        },
+        "workspace": "/root/.openclaw/workspace-agents/proger",
+        "agentDir": "/root/.openclaw/agents/proger/agent",
+        "model": {
+          "primary": "opencode-go/deepseek-v4-pro",
+          "fallbacks": [
+            "omniroute/requesty/deepseek/deepseek-v4-pro",
+            "tokenrouter-com/deepseek/deepseek-v4-pro"
+          ]
+        }
+      },
+      {
+        "id": "signal",
+        "name": "signal",
+        "groupChat": {
+          "mentionPatterns": [
+            "@gelych_openclaw_signal_bot",
+            "Синг"
+          ]
+        },
+        "workspace": "/root/.openclaw/workspace-agents/signal",
+        "agentDir": "/root/.openclaw/agents/signal/agent",
+        "model": {
+          "primary": "omniroute/agnes/agnes-2.0-flash",
+          "fallbacks": [
+            "agnes-ai-com/agnes-2.0-flash",
+            "mistral/mistral-medium-3-5",
+            "stepfun/step-3.7-flash"
+          ]
+        }
+      },
+      {
+        "id": "engineer",
+        "name": "engineer",
+        "subagents": {
+          "model": "nvidia/deepseek-ai/deepseek-v4-pro",
+          "allowAgents": [
+            "developer",
+            "proger"
+          ]
+        },
+        "groupChat": {
+          "mentionPatterns": [
+            "@gelych_openclaw_engineer_bot",
+            "Енж"
+          ]
+        },
+        "workspace": "/root/.openclaw/workspace-agents/engineer",
+        "agentDir": "/root/.openclaw/agents/engineer/agent",
+        "model": {
+          "primary": "omniroute/nvidia/z-ai/glm-5.2",
+          "fallbacks": [
+            "cmd-cli/GLM-5.2",
+            "omniroute/glmt/glm-5.2-max",
+            "nvidia/z-ai/glm-5.2",
+            "tokenrouter-com/z-ai/glm-5.2"
+          ]
+        }
+      },
+      {
+        "id": "qoder",
+        "name": "Qoder ACP",
+        "runtime": {
+          "type": "acp",
+          "acp": {
+            "agent": "qoder"
+          }
+        },
+        "model": "ultimate"
+      }
+    ]
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "omniroute": {
+        "baseUrl": "http://192.168.0.53:20128/v1",
+        "api": "openai-completions",
+        "apiKey": "${OMNIROUTE_API_KEY}",
+        "timeoutSeconds": 600,
+        "models": [
+          {
+            "id": "kr/claude-sonnet-4.5",
+            "name": "Claude sonnet 4.5"
+          },
+          {
+            "id": "bzl/deepseek-v4-flash",
+            "name": "Deepseek V4 Flash Baz",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek",
+              "supportedReasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            }
+          },
+          {
+            "id": "api-orcarouter-ai/deepseek/deepseek-v4-pro",
+            "name": "Deepseek V4 Pro orcarouter",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek",
+              "supportedReasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            }
+          },
+          {
+            "id": "api-orcarouter-ai/qwen/qwen3.5-flash",
+            "name": "Qwen3.5 Flash orcarouter",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 65536,
+            "compat": {
+              "thinkingFormat": "qwen",
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false
+            }
+          },
+          {
+            "id": "api-orcarouter-ai/orcarouter/free",
+            "name": "Orcarouter free"
+          },
+          {
+            "id": "af/moonshot/kimi-k2.6",
+            "name": "Kimi k2.6 free",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 65536,
+            "compat": {
+              "supportsDeveloperRole": false,
+              "supportsUsageInStreaming": false,
+              "supportsStrictMode": false
+            }
+          },
+          {
+            "id": "af/kimi-k2.6-thinking",
+            "name": "Kimi k2.6 thinking free",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 65536,
+            "compat": {
+              "supportsDeveloperRole": false,
+              "supportsUsageInStreaming": false,
+              "supportsStrictMode": false
+            }
+          },
+          {
+            "id": "fmd/gpt-5.5",
+            "name": "GPT 5.5"
+          },
+          {
+            "id": "agnes/agnes-2.0-flash",
+            "name": "Agnes 2.0 Flash",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 512000,
+            "maxTokens": 65536,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens"
+            }
+          },
+          {
+            "id": "opencode-zen/deepseek-v4-flash-free",
+            "name": "DeepSeek v4 flash opencode-zen",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek",
+              "supportedReasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            }
+          },
+          {
+            "id": "hf/deepseek-ai/DeepSeek-V4-Flash",
+            "name": "DeepSeek v4 flash HF",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 192000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek"
+            }
+          },
+          {
+            "id": "opencode-zen/mimo-v2.5-free",
+            "name": "Mimo v2.5 opencode",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 128000,
+            "compat": {
+              "supportsDeveloperRole": false,
+              "supportsUsageInStreaming": false,
+              "supportsStrictMode": false
+            }
+          },
+          {
+            "id": "mimo/mimo-v2.5",
+            "name": "Mimo v2.5",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1048576,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsDeveloperRole": false,
+              "supportsUsageInStreaming": false,
+              "supportsStrictMode": false
+            }
+          },
+          {
+            "id": "mimo/mimo-v2.5-pro",
+            "name": "Mimo v2.5 pro",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1048576,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsDeveloperRole": false,
+              "supportsUsageInStreaming": false,
+              "supportsStrictMode": false
+            }
+          },
+          {
+            "id": "requesty/xiaomi/mimo-v2.5-pro",
+            "name": "Mimo v2.5 pro requesty",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1048576,
+            "maxTokens": 128000,
+            "compat": {
+              "supportsDeveloperRole": false,
+              "supportsUsageInStreaming": false,
+              "supportsStrictMode": false
+            }
+          },
+          {
+            "id": "requesty/deepseek/deepseek-v4-pro",
+            "name": "Deepseek V4 Pro requesty",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek",
+              "supportedReasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            }
+          },
+          {
+            "id": "glmt/glm-5.2-max",
+            "name": "GLM-5.2 glmt",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens"
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "nvidia/z-ai/glm-5.2",
+            "name": "GLM-5.2 NVidia",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens"
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "nvidia/minimaxai/minimax-m3",
+            "name": "MiniMax-M3 NVidia",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens"
+            }
+          },
+          {
+            "id": "nvidia/deepseek-ai/deepseek-v4-pro",
+            "name": "DeepSeek V4 Pro NVidia",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek",
+              "supportedReasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "nvidia/deepseek-ai/deepseek-v4-flash",
+            "name": "DeepSeek V4 Flash NVidia",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek"
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "opencode-zen/nemotron-3-ultra-free",
+            "name": "Nemotron 3 Ultra"
+          },
+          {
+            "id": "zm/z-ai/glm-4.7-flash-free",
+            "name": "GLM 4.7 Flash zm"
+          },
+          {
+            "id": "zm/x-ai/grok-4.5-free",
+            "name": "Grok 4.5 Free"
+          },
+          {
+            "id": "zm/grok-4.5-free",
+            "name": "Grok 4.5 Free"
+          },
+          {
+            "id": "ofox/z-ai/glm-4.7-flash:free",
+            "name": "GLM 4.7 Flash ofox"
+          },
+          {
+            "id": "openrouter/openrouter/free",
+            "name": "OpenRouter Free"
+          },
+          {
+            "id": "vertex/gemini-3.5-flash",
+            "name": "Gemini 3.5 Flash Vertex",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1048576,
+            "maxTokens": 65536
+          },
+          {
+            "id": "gemini/gemini-3.5-flash",
+            "name": "Gemini 3.5 Flash",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1048576,
+            "maxTokens": 65536
+          },
+          {
+            "id": "alltokens/alltokens/free",
+            "name": "Free Alltokens",
+            "reasoning": true,
+            "input": [
+              "text"
+            ]
+          },
+          {
+            "id": "llmgateway/claude-haiku-4-5-free",
+            "name": "Claude Haiku 4 5 Free Llmgateway",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true
+            }
+          },
+          {
+            "id": "unc/Lorbus/Qwen3.6-27B-int4-AutoRound",
+            "name": "Qwen3.6 27b Int4 Autoround Unc",
+            "reasoning": true,
+            "input": [
+              "text"
+            ]
+          },
+          {
+            "id": "maxplus/claude-sonnet-5",
+            "name": "Claude Sonnet 5 Maxplus",
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "supportedReasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            }
+          },
+          {
+            "id": "tokenlayer/claude-sonnet-5",
+            "name": "Claude Sonnet 5 Tokenlayer",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1000000,
+            "reasoning": true,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true
+            }
+          },
+          {
+            "id": "tokenlayer/gpt-5.6-sol",
+            "name": "Gpt 5.6 Sol Tokenlayer",
+            "input": [
+              "text"
+            ],
+            "reasoning": true
+          },
+          {
+            "id": "kie-ai/gpt-5-6-terra",
+            "name": "Gpt 5 6 Terra KieAi",
+            "input": [
+              "text"
+            ],
+            "reasoning": true
+          }
+        ]
+      },
+      "opencode": {
+        "baseUrl": "https://opencode.ai/zen/v1",
+        "api": "openai-completions",
+        "apiKey": "${OPENCODE_ZEN_API_KEY}",
+        "timeoutSeconds": 600,
+        "models": [
+          {
+            "id": "deepseek-v4-flash-free",
+            "name": "DeepSeek V4 Flash",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek",
+              "supportedReasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            }
+          },
+          {
+            "id": "mimo-v2.5-free",
+            "name": "Mimo v2.5",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 128000,
+            "compat": {
+              "supportsDeveloperRole": false,
+              "supportsUsageInStreaming": false,
+              "supportsStrictMode": false
+            }
+          }
+        ]
+      },
+      "kiroproxy": {
+        "baseUrl": "http://127.0.0.1:11436/v1",
+        "api": "openai-completions",
+        "apiKey": "${KIROPROXY_API_KEY}",
+        "models": [
+          {
+            "id": "claude-sonnet-4.5",
+            "name": "Claude sonnet 4.5"
+          }
+        ]
+      },
+      "mistral": {
+        "baseUrl": "https://api.mistral.ai/v1",
+        "api": "openai-completions",
+        "apiKey": "${MISTRAL_API_KEY}",
+        "timeoutSeconds": 600,
+        "models": [
+          {
+            "id": "mistral-large-latest",
+            "name": "Mistral Large (latest)",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0.5,
+              "output": 1.5,
+              "cacheRead": 0.05,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 16384,
+            "compat": {
+              "supportsReasoningEffort": false
+            }
+          },
+          {
+            "id": "mistral-medium-3-5",
+            "name": "Mistral Medium 3.5",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0.5,
+              "output": 1.5,
+              "cacheRead": 0.15,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 8192,
+            "compat": {
+              "supportsReasoningEffort": false
+            }
+          }
+        ]
+      },
+      "stepfun": {
+        "baseUrl": "https://api.stepfun.ai/v1",
+        "api": "openai-completions",
+        "apiKey": "${STEPFUN_API_KEY}",
+        "timeoutSeconds": 600,
+        "models": [
+          {
+            "id": "step-3.7-flash",
+            "name": "Step 3.7 Flash",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 65536
+          },
+          {
+            "id": "step-3.5-flash",
+            "name": "Step 3.5 Flash",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 65536
+          },
+          {
+            "id": "step-3.5-flash-2603",
+            "name": "Step 3.5 Flash 2603",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 65536
+          }
+        ]
+      },
+      "bazaarlink-ai": {
+        "baseUrl": "https://bazaarlink.ai/api/v1",
+        "api": "openai-completions",
+        "apiKey": "${BAZAARLINK_API_KEY}",
+        "timeoutSeconds": 600,
+        "models": [
+          {
+            "id": "deepseek/deepseek-v4-flash",
+            "name": "DeepSeek v4 flash",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.14,
+              "output": 0.28,
+              "cacheRead": 0.028,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek"
+            }
+          }
+        ]
+      },
+      "tokenrouter-com": {
+        "baseUrl": "https://api.tokenrouter.com/v1",
+        "api": "openai-completions",
+        "apiKey": "${TOKENROUTER_API_KEY}",
+        "timeoutSeconds": 600,
+        "models": [
+          {
+            "id": "z-ai/glm-5.2-free",
+            "name": "GLM 5.2 free",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens"
+            }
+          },
+          {
+            "id": "z-ai/glm-5.2",
+            "name": "GLM 5.2",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens"
+            }
+          },
+          {
+            "id": "MiniMax-M3",
+            "name": "MiniMax-M3",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens"
+            }
+          },
+          {
+            "id": "x-ai/grok-4.1-fast",
+            "name": "Grok 4.1 Fast",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens"
+            }
+          },
+          {
+            "id": "deepseek/deepseek-v4-pro",
+            "name": "DeepSeek V4 Pro",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsUsageInStreaming": true,
+              "supportsReasoningEffort": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek",
+              "supportedReasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            }
+          },
+          {
+            "id": "deepseek/deepseek-v4-flash",
+            "name": "DeepSeek v4 flash",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek"
+            }
+          },
+          {
+            "id": "qwen/qwen3-coder-next",
+            "name": "Qwen3 coder next",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 65536,
+            "compat": {
+              "thinkingFormat": "qwen",
+              "supportsDeveloperRole": false,
+              "supportsUsageInStreaming": false,
+              "supportsStrictMode": false
+            }
+          },
+          {
+            "id": "qwen/qwen3.5-flash",
+            "name": "Qwen3.5 flash",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 65536,
+            "compat": {
+              "thinkingFormat": "qwen",
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false
+            }
+          },
+          {
+            "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+            "name": "Nemotron 3 nano reasoning free",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 256000,
+            "maxTokens": 16384
+          }
+        ]
+      },
+      "huggingface": {
+        "baseUrl": "https://router.huggingface.co/v1",
+        "api": "openai-completions",
+        "apiKey": "${HUGGINGFACE_API_KEY}",
+        "timeoutSeconds": 600,
+        "models": [
+          {
+            "id": "deepseek-ai/DeepSeek-R1",
+            "name": "DeepSeek R1",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 3,
+              "output": 7,
+              "cacheRead": 3,
+              "cacheWrite": 3
+            },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "deepseek-ai/DeepSeek-V3.1",
+            "name": "DeepSeek V3.1",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.6,
+              "output": 1.25,
+              "cacheRead": 0.6,
+              "cacheWrite": 0.6
+            },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "meta-llama/Llama-3.3-70B-Instruct-Turbo",
+            "name": "Llama 3.3 70B Instruct Turbo",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.88,
+              "output": 0.88,
+              "cacheRead": 0.88,
+              "cacheWrite": 0.88
+            },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          },
+          {
+            "id": "openai/gpt-oss-120b",
+            "name": "GPT-OSS 120B",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 131072,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "sensenova": {
+        "baseUrl": "https://token.sensenova.ai/v1",
+        "api": "openai-completions",
+        "apiKey": "${SENSENOVA_API_KEY}",
+        "timeoutSeconds": 600,
+        "models": [
+          {
+            "id": "sensenova-6.7-flash-lite",
+            "name": "SenseNova 6.7 Flash-Lite",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "maxTokens": 65536,
+            "compat": {
+              "supportsUsageInStreaming": true
+            },
+            "contextWindow": 262144
+          }
+        ]
+      },
+      "nvidia": {
+        "baseUrl": "https://integrate.api.nvidia.com/v1",
+        "api": "openai-completions",
+        "apiKey": "${NVIDIA_API_KEY}",
+        "timeoutSeconds": 600,
+        "models": [
+          {
+            "id": "nvidia/nemotron-3-ultra-550b-a55b",
+            "name": "NVIDIA Nemotron 3 Ultra 550B",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 16384,
+            "compat": {
+              "requiresStringContent": true
+            },
+            "params": {
+              "chat_template_kwargs": {
+                "enable_thinking": false,
+                "force_nonempty_content": true
+              }
+            }
+          },
+          {
+            "id": "nvidia/nemotron-3-super-120b-a12b",
+            "name": "NVIDIA Nemotron 3 Super 120B",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 8192,
+            "compat": {
+              "requiresStringContent": true
+            }
+          },
+          {
+            "id": "z-ai/glm-5.2",
+            "name": "GLM-5.2",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens"
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "minimaxai/minimax-m3",
+            "name": "MiniMax-M3",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens"
+            }
+          },
+          {
+            "id": "deepseek-ai/deepseek-v4-pro",
+            "name": "DeepSeek V4 Pro",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek",
+              "supportedReasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            },
+            "api": "openai-completions"
+          },
+          {
+            "id": "deepseek-ai/deepseek-v4-flash",
+            "name": "DeepSeek V4 Flash",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.14,
+              "output": 0.28,
+              "cacheRead": 0.028,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek"
+            },
+            "api": "openai-completions"
+          }
+        ]
+      },
+      "agnes-ai-com": {
+        "baseUrl": "https://apihub.agnes-ai.com/v1",
+        "api": "openai-completions",
+        "apiKey": "${AGNES_API_KEY}",
+        "timeoutSeconds": 600,
+        "models": [
+          {
+            "id": "agnes-2.0-flash",
+            "name": "Agnes 2.0 Flash",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 512000,
+            "maxTokens": 65536,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true
+            }
+          }
+        ]
+      },
+      "xiaomi": {
+        "baseUrl": "https://api.xiaomimimo.com/v1",
+        "api": "openai-completions",
+        "apiKey": "${XIAOMI_API_KEY}",
+        "timeoutSeconds": 600,
+        "models": [
+          {
+            "id": "mimo-v2.5",
+            "name": "Xiaomi MiMo V2.5",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1048576,
+            "maxTokens": 131072
+          },
+          {
+            "id": "mimo-v2.5-pro",
+            "name": "Xiaomi MiMo V2.5 Pro",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1048576,
+            "maxTokens": 131072
+          }
+        ]
+      },
+      "qwen": {
+        "baseUrl": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+        "api": "openai-completions",
+        "apiKey": "${QWEN_API_KEY}",
+        "timeoutSeconds": 600,
+        "models": [
+          {
+            "id": "qwen3.5-plus",
+            "name": "qwen3.5-plus",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 65536
+          },
+          {
+            "id": "qwen3.6-plus",
+            "name": "qwen3.6-plus",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 65536
+          },
+          {
+            "id": "qwen3.7-plus",
+            "name": "qwen3.7-plus",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 65536
+          },
+          {
+            "id": "qwen3.7-max",
+            "name": "qwen3.7-max",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1048576,
+            "maxTokens": 65536
+          },
+          {
+            "id": "qwen3-coder-plus",
+            "name": "qwen3-coder-plus",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 65536
+          },
+          {
+            "id": "glm-5.2",
+            "name": "GLM-5.2",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1048576,
+            "maxTokens": 131072
+          },
+          {
+            "id": "deepseek-v4-pro",
+            "name": "DeepSeek V4 Pro",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsUsageInStreaming": true,
+              "supportsReasoningEffort": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek",
+              "supportedReasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            }
+          },
+          {
+            "id": "deepseek-v4-flash",
+            "name": "DeepSeek v4 flash",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek"
+            }
+          },
+          {
+            "id": "kimi-k2.7-code",
+            "name": "kimi-k2.7-code",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 16384
+          }
+        ]
+      },
+      "alibaba": {
+        "baseUrl": "https://ws-k0l0vsoaztunrsxy.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+        "api": "openai-completions",
+        "apiKey": "${MODELSTUDIO_API_KEY}",
+        "timeoutSeconds": 600,
+        "models": [
+          {
+            "id": "qwen3.5-plus",
+            "name": "qwen3.5-plus",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 65536
+          },
+          {
+            "id": "qwen3.6-plus",
+            "name": "qwen3.6-plus",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 65536
+          },
+          {
+            "id": "qwen3.7-plus",
+            "name": "qwen3.7-plus",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 65536
+          },
+          {
+            "id": "qwen3.7-max",
+            "name": "qwen3.7-max",
+            "reasoning": false,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1048576,
+            "maxTokens": 65536
+          },
+          {
+            "id": "qwen3-coder-plus",
+            "name": "qwen3-coder-plus",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 65536
+          },
+          {
+            "id": "glm-5.2",
+            "name": "GLM-5.2",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1048576,
+            "maxTokens": 131072
+          },
+          {
+            "id": "deepseek-v4-pro",
+            "name": "DeepSeek V4 Pro",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsUsageInStreaming": true,
+              "supportsReasoningEffort": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek",
+              "supportedReasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            }
+          },
+          {
+            "id": "deepseek-v4-flash",
+            "name": "DeepSeek v4 flash",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 1000000,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek"
+            }
+          },
+          {
+            "id": "kimi-k2.7-code",
+            "name": "kimi-k2.7-code",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 16384
+          }
+        ]
+      }
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "auth": {
+      "mode": "token",
+      "token": "${OPENCLAW_GATEWAY_TOKEN}"
+    },
+    "port": 18789,
+    "bind": "loopback",
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "controlUi": {
+      "allowInsecureAuth": false
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "contacts.add",
+        "calendar.add",
+        "reminders.add",
+        "sms.send",
+        "sms.search"
+      ]
+    }
+  },
+  "session": {
+    "dmScope": "per-account-channel-peer",
+    "reset": {
+      "mode": "idle",
+      "idleMinutes": 4320
+    },
+    "maintenance": {
+      "mode": "enforce",
+      "pruneAfter": "14d",
+      "maxEntries": 300
+    },
+    "agentToAgent": {
+      "maxPingPongTurns": 5
+    }
+  },
+  "messages": {
+    "tts": {
+      "auto": "tagged",
+      "provider": "xiaomi",
+      "providers": {
+        "xiaomi": {
+          "apiKey": "XIAOMI_API_KEY",
+          "model": "mimo-v2.5-tts",
+          "speakerVoice": "mimo_default",
+          "format": "mp3"
+        }
+      }
+    }
+  },
+  "tools": {
+    "profile": "full",
+    "media": {
+      "audio": {
+        "enabled": true,
+        "models": [
+          {
+            "provider": "mistral",
+            "model": "voxtral-mini-latest"
+          }
+        ]
+      }
+    },
+    "elevated": {
+      "enabled": true,
+      "allowFrom": {
+        "telegram": [
+          792821114
+        ]
+      }
+    },
+    "agentToAgent": {
+      "enabled": true,
+      "allow": [
+        "main",
+        "analyst",
+        "developer",
+        "creative",
+        "trader",
+        "risk",
+        "proger",
+        "signal",
+        "engineer"
+      ]
+    },
+    "sessions": {
+      "visibility": "all"
+    },
+    "web": {
+      "search": {
+        "provider": "exa",
+        "enabled": true,
+        "highlights": {
+          "numSentences": 3
+        },
+        "summary": true
+      },
+      "fetch": {
+        "enabled": true
+      }
+    }
+  },
+  "plugins": {
+    "allow": [
+      "acpx",
+      "exa",
+      "llama-cpp",
+      "alibaba",
+      "qwen",
+      "stepfun",
+      "xiaomi",
+      "cline-cli",
+      "google",
+      "opencode",
+      "cmd-cli",
+      "huggingface",
+      "mistral",
+      "nvidia",
+      "opencode-go",
+      "openrouter",
+      "browser",
+      "deepseek",
+      "duckduckgo",
+      "memory-core",
+      "telegram",
+      "workboard",
+      "fal"
+    ],
+    "entries": {
+      "opencode": {
+        "enabled": true
+      },
+      "telegram": {
+        "enabled": true
+      },
+      "duckduckgo": {
+        "enabled": true
+      },
+      "mistral": {
+        "enabled": true
+      },
+      "openrouter": {
+        "enabled": true
+      },
+      "stepfun": {
+        "enabled": true
+      },
+      "exa": {
+        "enabled": true,
+        "config": {
+          "webSearch": {
+            "apiKey": "${EXA_API_KEY}"
+          }
+        }
+      },
+      "google": {
+        "enabled": true
+      },
+      "xiaomi": {
+        "enabled": true
+      },
+      "acpx": {
+        "enabled": true,
+        "config": {
+          "permissionMode": "approve-all",
+          "nonInteractivePermissions": "deny"
+        }
+      },
+      "opencode-go": {
+        "enabled": true
+      },
+      "workboard": {
+        "enabled": true
+      },
+      "llama-cpp": {
+        "enabled": true
+      },
+      "cline-cli": {
+        "enabled": true
+      },
+      "cmd-cli": {
+        "enabled": true
+      },
+      "huggingface": {
+        "enabled": true
+      },
+      "deepseek": {
+        "enabled": true
+      },
+      "browser": {
+        "enabled": true
+      },
+      "vydra": {
+        "enabled": false
+      },
+      "voyage": {
+        "enabled": false
+      },
+      "volcengine": {
+        "enabled": false
+      },
+      "novita": {
+        "enabled": false
+      },
+      "fal": {
+        "enabled": true
+      },
+      "comfy": {
+        "enabled": false
+      },
+      "cohere": {
+        "enabled": false
+      },
+      "byteplus": {
+        "enabled": false
+      },
+      "azure-speech": {
+        "enabled": false
+      },
+      "alibaba": {
+        "enabled": true
+      },
+      "nvidia": {
+        "enabled": true
+      },
+      "qwen": {
+        "enabled": true
+      }
+    },
+    "load": {
+      "paths": [
+        "/root/.openclaw/plugins/cline-cli",
+        "/root/.openclaw/plugins/cmd-cli"
+      ]
+    },
+    "bundledDiscovery": "compat"
+  },
+  "auth": {
+    "profiles": {
+      "opencode:default": {
+        "provider": "opencode",
+        "mode": "api_key"
+      },
+      "opencode-go:default": {
+        "provider": "opencode-go",
+        "mode": "api_key"
+      },
+      "mistral:default": {
+        "provider": "mistral",
+        "mode": "api_key"
+      },
+      "openrouter:default": {
+        "provider": "openrouter",
+        "mode": "api_key"
+      },
+      "stepfun:intl": {
+        "provider": "stepfun",
+        "mode": "api_key"
+      },
+      "stepfun-plan:intl": {
+        "provider": "stepfun-plan",
+        "mode": "api_key"
+      },
+      "google:default": {
+        "provider": "google",
+        "mode": "api_key"
+      },
+      "xiaomi:default": {
+        "provider": "xiaomi",
+        "mode": "api_key"
+      },
+      "huggingface:default": {
+        "provider": "huggingface",
+        "mode": "api_key"
+      },
+      "deepseek:default": {
+        "provider": "deepseek",
+        "mode": "api_key"
+      },
+      "nvidia:default": {
+        "provider": "nvidia",
+        "mode": "api_key"
+      },
+      "qwen:default": {
+        "provider": "qwen",
+        "mode": "api_key"
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "allowlist",
+      "groupPolicy": "allowlist",
+      "allowFrom": [
+        "792821114"
+      ],
+      "groupAllowFrom": [
+        "792821114"
+      ],
+      "streaming": {
+        "mode": "partial",
+        "preview": {
+          "toolProgress": true
+        }
+      },
+      "richMessages": true,
+      "replyToMode": "off",
+      "errorPolicy": "once",
+      "reactionNotifications": "own",
+      "reactionLevel": "minimal",
+      "actions": {
+        "sendMessage": true,
+        "reactions": true,
+        "deleteMessage": true,
+        "sticker": true
+      },
+      "capabilities": {
+        "inlineButtons": "all"
+      },
+      "execApprovals": {
+        "enabled": "auto",
+        "target": "both",
+        "approvers": [
+          792821114
+        ]
+      },
+      "historyLimit": 33,
+      "customCommands": [
+        {
+          "command": "moning_report",
+          "description": "Утренний отчёт"
+        },
+        {
+          "command": "system_status",
+          "description": "Статус системы"
+        }
+      ],
+      "textChunkLimit": 4096,
+      "linkPreview": false,
+      "threadBindings": {
+        "enabled": true,
+        "spawnSessions": true
+      },
+      "groups": {
+        "-1003901263956": {
+          "requireMention": true,
+          "topics": {
+            "1": {
+              "agentId": "main"
+            },
+            "2": {
+              "agentId": "analyst"
+            },
+            "4": {
+              "agentId": "developer"
+            },
+            "6": {
+              "agentId": "creative"
+            },
+            "8": {
+              "agentId": "trader"
+            },
+            "10": {
+              "agentId": "risk"
+            },
+            "1459": {
+              "agentId": "proger"
+            },
+            "1469": {
+              "agentId": "signal"
+            },
+            "1492": {
+              "agentId": "engineer"
+            }
+          }
+        }
+      },
+      "accounts": {
+        "default": {
+          "enabled": true,
+          "botToken": "${TELEGRAM_DEFAULT_BOT_TOKEN}"
+        },
+        "analyst": {
+          "enabled": true,
+          "botToken": "${TELEGRAM_ANALYST_BOT_TOKEN}"
+        },
+        "developer": {
+          "enabled": true,
+          "botToken": "${TELEGRAM_DEVELOPER_BOT_TOKEN}"
+        },
+        "creative": {
+          "enabled": true,
+          "botToken": "${TELEGRAM_CREATIVE_BOT_TOKEN}"
+        },
+        "trader": {
+          "enabled": true,
+          "botToken": "${TELEGRAM_TRADER_BOT_TOKEN}"
+        },
+        "risk": {
+          "enabled": true,
+          "botToken": "${TELEGRAM_RISK_BOT_TOKEN}"
+        },
+        "proger": {
+          "enabled": true,
+          "botToken": "${TELEGRAM_PROGER_BOT_TOKEN}"
+        },
+        "signal": {
+          "enabled": true,
+          "botToken": "${TELEGRAM_SIGNAL_BOT_TOKEN}"
+        },
+        "engineer": {
+          "enabled": true,
+          "botToken": "${TELEGRAM_ENGINEER_BOT_TOKEN}"
+        }
+      }
+    }
+  },
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "session-memory": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "wizard": {
+    "lastRunAt": "2026-07-23T13:42:01.107Z",
+    "lastRunVersion": "2026.7.1-2",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local",
+    "securityAcknowledgedAt": "2026-07-17T16:35:36.305Z"
+  },
+  "meta": {
+    "lastTouchedVersion": "2026.7.1-2",
+    "lastTouchedAt": "2026-07-23T13:42:01.257Z"
+  },
+  "bindings": [
+    {
+      "type": "route",
+      "agentId": "main",
+      "match": {
+        "channel": "telegram",
+        "accountId": "default"
+      }
+    },
+    {
+      "type": "route",
+      "agentId": "analyst",
+      "match": {
+        "channel": "telegram",
+        "accountId": "analyst"
+      }
+    },
+    {
+      "type": "route",
+      "agentId": "developer",
+      "match": {
+        "channel": "telegram",
+        "accountId": "developer"
+      }
+    },
+    {
+      "type": "route",
+      "agentId": "creative",
+      "match": {
+        "channel": "telegram",
+        "accountId": "creative"
+      }
+    },
+    {
+      "type": "route",
+      "agentId": "trader",
+      "match": {
+        "channel": "telegram",
+        "accountId": "trader"
+      }
+    },
+    {
+      "type": "route",
+      "agentId": "risk",
+      "match": {
+        "channel": "telegram",
+        "accountId": "risk"
+      }
+    },
+    {
+      "type": "route",
+      "agentId": "proger",
+      "match": {
+        "channel": "telegram",
+        "accountId": "proger"
+      }
+    },
+    {
+      "type": "route",
+      "agentId": "signal",
+      "match": {
+        "channel": "telegram",
+        "accountId": "signal"
+      }
+    },
+    {
+      "type": "route",
+      "agentId": "engineer",
+      "match": {
+        "channel": "telegram",
+        "accountId": "engineer"
+      }
+    }
+  ],
+  "commands": {
+    "ownerAllowFrom": [
+      "telegram:792821114"
+    ]
+  },
+  "skills": {
+    "entries": {
+      "1password": {
+        "enabled": false
+      },
+      "apple-notes": {
+        "enabled": false
+      },
+      "apple-reminders": {
+        "enabled": false
+      },
+      "bear-notes": {
+        "enabled": false
+      },
+      "blogwatcher": {
+        "enabled": false
+      },
+      "blucli": {
+        "enabled": false
+      },
+      "camsnap": {
+        "enabled": false
+      },
+      "coding-agent": {
+        "enabled": true
+      },
+      "discord": {
+        "enabled": false
+      },
+      "eightctl": {
+        "enabled": false
+      },
+      "gh-issues": {
+        "enabled": false
+      },
+      "gifgrep": {
+        "enabled": false
+      },
+      "github": {
+        "enabled": true
+      },
+      "gog": {
+        "enabled": true
+      },
+      "goplaces": {
+        "enabled": false
+      },
+      "himalaya": {
+        "enabled": false
+      },
+      "imsg": {
+        "enabled": false
+      },
+      "mcporter": {
+        "enabled": false
+      },
+      "model-usage": {
+        "enabled": false
+      },
+      "nano-pdf": {
+        "enabled": true
+      },
+      "obsidian": {
+        "enabled": false
+      },
+      "openai-whisper": {
+        "enabled": false
+      },
+      "openai-whisper-api": {
+        "enabled": false
+      },
+      "openhue": {
+        "enabled": false
+      },
+      "oracle": {
+        "enabled": false
+      },
+      "ordercli": {
+        "enabled": false
+      },
+      "peekaboo": {
+        "enabled": false
+      },
+      "sag": {
+        "enabled": false
+      },
+      "session-logs": {
+        "enabled": false
+      },
+      "sherpa-onnx-tts": {
+        "enabled": false
+      },
+      "slack": {
+        "enabled": false
+      },
+      "songsee": {
+        "enabled": false
+      },
+      "sonoscli": {
+        "enabled": false
+      },
+      "spotify-player": {
+        "enabled": false
+      },
+      "summarize": {
+        "enabled": true
+      },
+      "things-mac": {
+        "enabled": false
+      },
+      "trello": {
+        "enabled": false
+      },
+      "video-frames": {
+        "enabled": false
+      },
+      "voice-call": {
+        "enabled": false
+      },
+      "wacli": {
+        "enabled": false
+      },
+      "xurl": {
+        "enabled": false
+      },
+      "sn-search-image": {
+        "enabled": false
+      }
+    },
+    "install": {
+      "nodeManager": "npm"
+    }
+  },
+  "browser": {
+    "noSandbox": true,
+    "localLaunchTimeoutMs": 60000,
+    "localCdpReadyTimeoutMs": 60000,
+    "actionTimeoutMs": 60000,
+    "headless": true,
+    "executablePath": "/snap/bin/chromium",
+    "attachOnly": true
+  },
+  "logging": {
+    "level": "warn"
+  },
+  "acp": {
+    "backend": "acpx",
+    "allowedAgents": [
+      "qoder",
+      "opencode",
+      "kilo",
+      "gemini"
+    ],
+    "defaultAgent": "qoder"
+  }
+}
