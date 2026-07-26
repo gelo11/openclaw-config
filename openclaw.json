@@ -2228,7 +2228,7 @@
       "hcnsec-cn": {
         "baseUrl": "https://api.hcnsec.cn/v1",
         "api": "openai-completions",
-        "apiKey": "sk-KxmhBi2P9bO3FmlVgex87h9sTg0laDXCPPo4WOt4P492e8g3",
+        "apiKey": "${HCNSEC_CN_API_KEY}",
         "timeoutSeconds": 600,
         "models": [
           {
@@ -2313,7 +2313,7 @@
       "provider": "xiaomi",
       "providers": {
         "xiaomi": {
-          "apiKey": "XIAOMI_API_KEY",
+          "apiKey": "${XIAOMI_API_KEY}",
           "model": "mimo-v2.5-tts",
           "speakerVoice": "mimo_default",
           "format": "mp3"
