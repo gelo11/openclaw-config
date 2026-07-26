@@ -2228,7 +2228,7 @@
       "hcnsec-cn": {
         "baseUrl": "https://api.hcnsec.cn/v1",
         "api": "openai-completions",
-        "apiKey": "sk-CRAzE8g7w5yJpc7Kk1zs5FCPFiZcP2n4qtcAhhndDLnVOXwe",
+        "apiKey": "sk-KxmhBi2P9bO3FmlVgex87h9sTg0laDXCPPo4WOt4P492e8g3",
         "timeoutSeconds": 600,
         "models": [
           {
