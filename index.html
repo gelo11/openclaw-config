@@ -876,7 +876,7 @@ function openModelModal(idx) {
   efLabel.style.cssText = 'display:block;font-size:10px;font-weight:600;color:var(--text2);margin:6px 0 2px';
   efLabel.textContent = 'supportedReasoningEfforts';
   compatChecks.appendChild(efLabel);
-  const effortOpts = ['low', 'medium', 'high', 'xhigh', 'max'];}]}
+  const effortOpts = ['low', 'medium', 'high', 'xhigh', 'max'];
   const curEfforts = currentCompat.supportedReasoningEfforts || [];
   const effortGroup = document.createElement('div'); effortGroup.className = 'checkbox-group';
   effortOpts.forEach(opt => {
