@@ -152,7 +152,7 @@ body {
 .fallback-item .del { cursor: pointer; padding: 0 4px; font-size: 14px; color: var(--text2); flex-shrink: 0; }
 .fallback-item .del:hover { color: var(--danger); }
 
-.binding-section { background: var(--bg3); border-radius: var(--radius); margin-bottom: 10px; overflow: hidden; }
+.binding-section { background: var(--bg3); border-radius: var(--radius); margin-bottom: 10px; }
 .binding-section h4 { font-size: 13px; cursor: pointer; padding: 10px 12px; display: flex; align-items: center; gap: 6px; user-select: none; margin: 0; }
 .binding-section h4 .arrow { transition: transform .2s; font-size: 10px; }
 .binding-section h4 .arrow.collapsed { transform: rotate(-90deg); }
@@ -366,6 +366,14 @@ async function doLoad() {
 
 async function saveConfig(silent) {
   if (!config) return;
+  // Strip internal fields from all provider models
+  if (config.models?.providers) {
+    for (const p of Object.values(config.models.providers)) {
+      if (p.models) for (const m of p.models) {
+        delete m._autoName;
+      }
+    }
+  }
   try {
     const r = await api('saveConfig', { config });
     if (r.success && !silent) toast('Сохранено!');
@@ -845,7 +853,7 @@ function openModelModal(idx) {
   tfLabel.style.cssText = 'display:block;font-size:10px;font-weight:600;color:var(--text2);margin:6px 0 2px';
   tfLabel.textContent = 'thinkingFormat';
   compatChecks.appendChild(tfLabel);
-  const thinkOpts = ['openai', 'openrouter', 'deepseek', 'together', 'qwen', 'qwen-chat-template', 'zai'];
+  const thinkOpts = ['openai', 'openrouter', 'deepseek', 'together', 'qwen', 'qwen-chat-template', 'zai', 'max'];
   const thinkGroup = document.createElement('div'); thinkGroup.className = 'checkbox-group';
   thinkOpts.forEach(opt => {
     const lbl = document.createElement('label');
@@ -868,7 +876,7 @@ function openModelModal(idx) {
   efLabel.style.cssText = 'display:block;font-size:10px;font-weight:600;color:var(--text2);margin:6px 0 2px';
   efLabel.textContent = 'supportedReasoningEfforts';
   compatChecks.appendChild(efLabel);
-  const effortOpts = ['low', 'medium', 'high', 'xhigh'];
+  const effortOpts = ['low', 'medium', 'high', 'xhigh', 'max'];}]}
   const curEfforts = currentCompat.supportedReasoningEfforts || [];
   const effortGroup = document.createElement('div'); effortGroup.className = 'checkbox-group';
   effortOpts.forEach(opt => {
@@ -975,6 +983,9 @@ function saveModelFromModal() {
 
   if (hasError) return;
 
+  // Clean up internal fields
+  delete model._autoName;
+
   // Save
   const p = config.models.providers[selectedProvider];
   if (!p.models) p.models = [];
@@ -1054,6 +1065,8 @@ function renderAgentModelsTab() {
 }
 
 // ===== BINDINGS TAB =====
+const _bindingOpen = new Set(); // Track open agent sections
+
 function renderBindingsTab() {
   const tab = document.getElementById('tab-bindings');
   tab.innerHTML = '';
@@ -1091,6 +1104,7 @@ function renderBindingsTab() {
   fFbLabel.innerHTML = '<label style="font-size:11px;font-weight:600;color:var(--text2)">Fallbacks</label>';
   defBody.appendChild(fFbLabel);
   renderFallbackList(defBody, defModel, allModels);
+  renderRelatedModels(defBody, defModel);
   defSection.appendChild(defBody);
   tab.appendChild(defSection);
 
@@ -1099,18 +1113,26 @@ function renderBindingsTab() {
   const agents = config.agents.list.filter(a => !(a.runtime && a.runtime.type === 'acp'));
 
   agents.forEach((agent, idx) => {
+    const agentKey = agent.id || 'agent-' + idx;
+    const isOpen = _bindingOpen.has(agentKey);
+
     const aSection = document.createElement('div');
     aSection.className = 'binding-section';
 
     const h4 = document.createElement('h4');
-    h4.innerHTML = `<span class="arrow">▼</span> 🤖 ${escapeHtml(agent.id || 'agent-' + idx)}`;
+    h4.innerHTML = `<span class="arrow${isOpen ? '' : ' collapsed'}">▼</span> 🤖 ${escapeHtml(agentKey)}`;
     aSection.appendChild(h4);
 
     const body = document.createElement('div');
-    body.className = 'section-body collapsed';
+    body.className = 'section-body' + (isOpen ? '' : ' collapsed');
     h4.onclick = () => {
       body.classList.toggle('collapsed');
       h4.querySelector('.arrow').classList.toggle('collapsed');
+      if (body.classList.contains('collapsed')) {
+        _bindingOpen.delete(agentKey);
+      } else {
+        _bindingOpen.add(agentKey);
+      }
     };
 
     if (!agent.model) agent.model = { primary: '', fallbacks: [] };
@@ -1125,9 +1147,44 @@ function renderBindingsTab() {
     fFbL.innerHTML = '<label style="font-size:11px;font-weight:600;color:var(--text2)">Fallbacks</label>';
     body.appendChild(fFbL);
     renderFallbackList(body, agent.model, allModels);
+    renderRelatedModels(body, agent.model);
     aSection.appendChild(body);
     tab.appendChild(aSection);
   });
+}
+
+function renderRelatedModels(container, modelObj) {
+  const primaryId = modelObj.primary || '';
+  if (!primaryId) return;
+  const suffix = primaryId.split('/').pop();
+  const dm = config?.agents?.defaults?.models;
+  if (!dm) return;
+  const fallbacks = modelObj.fallbacks || [];
+  const related = [];
+  for (const key of Object.keys(dm)) {
+    if (key === primaryId || fallbacks.includes(key)) continue;
+    if (key.split('/').pop() === suffix) related.push(key);
+  }
+  if (related.length === 0) return;
+  const label = document.createElement('div');
+  label.style.cssText = 'font-size:10px;font-weight:600;color:var(--text2);margin:8px 0 4px';
+  label.textContent = `Похожие модели (${related.length})`;
+  container.appendChild(label);
+  const listDiv = document.createElement('div');
+  listDiv.className = 'fallback-list';
+  related.forEach(key => {
+    const item = document.createElement('div');
+    item.className = 'fallback-item';
+    item.innerHTML = `<span class="model">${escapeHtml(key)}</span>`;
+    const addBtn = document.createElement('span');
+    addBtn.style.cssText = 'cursor:pointer;padding:0 4px;font-size:16px;color:var(--success);flex-shrink:0';
+    addBtn.textContent = '+';
+    addBtn.title = 'Добавить в Fallbacks';
+    addBtn.onclick = () => { modelObj.fallbacks.push(key); saveConfig(true); renderBindingsTab(); };
+    item.appendChild(addBtn);
+    listDiv.appendChild(item);
+  });
+  container.appendChild(listDiv);
 }
 
 function renderFallbackList(container, modelObj, allModels) {
