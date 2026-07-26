@@ -250,7 +250,7 @@ textarea { resize: vertical; min-height: 60px; font-family: monospace; font-size
   <div class="content">
     <div class="tabs">
       <button class="tab-btn active" data-tab="providers" onclick="switchTab('providers')">🌐 Провайдеры</button>
-      <button class="tab-btn" data-tab="agentModels" onclick="switchTab('agentModels')">🤖 Модели агентов</button>
+      <button class="tab-btn" data-tab="agentModels" onclick="switchTab('agentModels')">📦 Модели</button>
       <button class="tab-btn" data-tab="bindings" onclick="switchTab('bindings')">🔗 Привязка</button>
       <button class="tab-btn" data-tab="general" onclick="switchTab('general')">⚙️ Общие</button>
     </div>
@@ -1053,6 +1053,23 @@ function syncDefaultsModels() {
   }
 }
 
+function getBoundModelIds() {
+  const bound = new Set();
+  // defaults
+  const dm = config.agents.defaults.model;
+  if (dm?.primary) bound.add(dm.primary);
+  if (dm?.fallbacks) dm.fallbacks.forEach(f => { if (f) bound.add(f); });
+  // agents
+  if (config.agents.list) {
+    for (const a of config.agents.list) {
+      if (a.runtime?.type === 'acp') continue;
+      if (a.model?.primary) bound.add(a.model.primary);
+      if (a.model?.fallbacks) a.model.fallbacks.forEach(f => { if (f) bound.add(f); });
+    }
+  }
+  return bound;
+}
+
 // ===== AGENT MODELS TAB =====
 function renderAgentModelsTab() {
   const tab = document.getElementById('tab-agentModels');
@@ -1065,10 +1082,19 @@ function renderAgentModelsTab() {
 
   const models = config.agents.defaults.models;
   const modelKeys = Object.keys(models); // preserve order
+  const bound = getBoundModelIds();
 
   let filtered = modelKeys;
   if (selectedProvider) {
     filtered = modelKeys.filter(k => k.startsWith(selectedProvider + '/'));
+  }
+
+  const unbound = filtered.filter(k => !bound.has(k));
+  if (unbound.length) {
+    const hint = document.createElement('div');
+    hint.style.cssText = 'padding:4px 8px;margin-bottom:4px;font-size:11px;background:#3a2a1a;color:#ffa726;border-radius:4px';
+    hint.textContent = `⚠ ${unbound.length} моделей не привязаны к агентам`;
+    tab.appendChild(hint);
   }
 
   const info = document.createElement('div');
@@ -1080,9 +1106,23 @@ function renderAgentModelsTab() {
   tab.appendChild(info);
 
   filtered.forEach(key => {
+    const isBound = bound.has(key);
     const div = document.createElement('div');
     div.className = 'fallback-item';
+    if (!isBound) {
+      div.style.background = '#3a2a1a';
+      div.style.borderLeft = '3px solid #ffa726';
+    }
     div.innerHTML = `<span class="model">${escapeHtml(key)}</span>`;
+
+    // Bind button
+    const bindBtn = document.createElement('span');
+    bindBtn.style.cssText = 'cursor:pointer;padding:0 6px;font-size:14px;color:var(--accent);flex-shrink:0;';
+    bindBtn.textContent = '➕';
+    bindBtn.title = 'Привязать к агенту';
+    bindBtn.onclick = (e) => { e.stopPropagation(); openBindPopup(key); };
+    div.appendChild(bindBtn);
+
     const delBtn = document.createElement('span');
     delBtn.className = 'del';
     delBtn.textContent = '×';
@@ -1095,6 +1135,85 @@ function renderAgentModelsTab() {
     div.appendChild(delBtn);
     tab.appendChild(div);
   });
+}
+
+function openBindPopup(modelKey) {
+  let overlay = document.getElementById('bindOverlay');
+  if (!overlay) {
+    overlay = document.createElement('div'); overlay.id = 'bindOverlay';
+    overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center';
+    overlay.onclick = () => overlay.remove();
+    document.body.appendChild(overlay);
+  }
+  overlay.innerHTML = '';
+
+  const box = document.createElement('div');
+  box.style.cssText = 'background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:16px;max-width:420px;width:90%;max-height:70vh;overflow-y:auto';
+  box.onclick = (e) => e.stopPropagation();
+
+  const title = document.createElement('div');
+  title.style.cssText = 'font-size:14px;font-weight:700;margin-bottom:4px';
+  title.textContent = 'Привязать к агенту';
+  box.appendChild(title);
+
+  const sub = document.createElement('div');
+  sub.style.cssText = 'font-size:11px;color:var(--text2);margin-bottom:12px;word-break:break-all';
+  sub.textContent = modelKey;
+  box.appendChild(sub);
+
+  const agents = (config.agents.list || []).filter(a => !(a.runtime?.type === 'acp'));
+  if (agents.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'text-muted'; empty.textContent = 'Нет агентов';
+    box.appendChild(empty);
+    overlay.appendChild(box);
+    return;
+  }
+
+  agents.forEach(a => {
+    const agentKey = a.id || 'agent';
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:6px 8px;background:var(--bg3);border-radius:4px;margin-bottom:4px';
+    row.innerHTML = `<span style="flex:1;font-size:12px">🤖 ${escapeHtml(agentKey)}</span>`;
+
+    const btnP = document.createElement('button');
+    btnP.style.cssText = 'padding:4px 10px;border:none;border-radius:4px;font-size:11px;cursor:pointer;background:var(--accent);color:#fff';
+    btnP.textContent = 'Primary';
+    btnP.onclick = () => {
+      if (!a.model) a.model = { primary: '', fallbacks: [] };
+      a.model.primary = modelKey;
+      saveConfig(true);
+      overlay.remove();
+      renderAgentModelsTab();
+    };
+    row.appendChild(btnP);
+
+    const btnF = document.createElement('button');
+    btnF.style.cssText = 'padding:4px 10px;border:1px solid var(--border);border-radius:4px;font-size:11px;cursor:pointer;background:transparent;color:var(--text)';
+    btnF.textContent = 'Fallbacks';
+    btnF.onclick = () => {
+      if (!a.model) a.model = { primary: '', fallbacks: [] };
+      if (!a.model.fallbacks) a.model.fallbacks = [];
+      if (!a.model.fallbacks.includes(modelKey)) a.model.fallbacks.push(modelKey);
+      saveConfig(true);
+      overlay.remove();
+      renderAgentModelsTab();
+    };
+    row.appendChild(btnF);
+
+    box.appendChild(row);
+  });
+
+  const cancelRow = document.createElement('div');
+  cancelRow.style.cssText = 'text-align:right;margin-top:10px';
+  const cancelBtn = document.createElement('button');
+  cancelBtn.style.cssText = 'padding:6px 16px;border:1px solid var(--border);border-radius:var(--radius);background:transparent;color:var(--text);cursor:pointer;font-size:12px';
+  cancelBtn.textContent = 'Отмена';
+  cancelBtn.onclick = () => overlay.remove();
+  cancelRow.appendChild(cancelBtn);
+  box.appendChild(cancelRow);
+
+  overlay.appendChild(box);
 }
 
 // ===== BINDINGS TAB =====

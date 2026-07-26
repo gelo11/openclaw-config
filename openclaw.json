@@ -23,8 +23,8 @@
         "nvidia/deepseek-ai/deepseek-v4-flash": {},
         "nvidia/deepseek-ai/deepseek-v4-pro": {},
         "nvidia/minimaxai/minimax-m3": {},
-        "nvidia/nemotron-3-super-120b-a12b": {},
-        "nvidia/nemotron-3-ultra-550b-a55b": {},
+        "nvidia/nvidia/nemotron-3-super-120b-a12b": {},
+        "nvidia/nvidia/nemotron-3-ultra-550b-a55b": {},
         "nvidia/z-ai/glm-5.2": {},
         "omniroute/af/kimi-k2.6-thinking": {},
         "omniroute/af/moonshot/kimi-k2.6": {},
@@ -2237,7 +2237,7 @@
             "input": [
               "text"
             ],
-            "contextWindow": 1048576,
+            "contextWindow": 1047576,
             "maxTokens": 131072,
             "reasoning": true,
             "compat": {
@@ -2253,7 +2253,7 @@
               "text"
             ],
             "maxTokens": 131072,
-            "contextWindow": 1048576,
+            "contextWindow": 1047576,
             "reasoning": true,
             "compat": {
               "supportsReasoningEffort": true,
