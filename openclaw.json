@@ -128,7 +128,7 @@
           "alibaba/happyhorse-1.1-t2v"
         ]
       },
-      "thinkingDefault": "xhigh",
+      "thinkingDefault": "max",
       "reasoningDefault": "stream",
       "contextPruning": {
         "mode": "cache-ttl",
@@ -484,7 +484,8 @@
                 "low",
                 "medium",
                 "high",
-                "xhigh"
+                "xhigh",
+                "max"
               ]
             }
           },
@@ -513,7 +514,8 @@
                 "low",
                 "medium",
                 "high",
-                "xhigh"
+                "xhigh",
+                "max"
               ]
             }
           },
@@ -640,7 +642,8 @@
                 "low",
                 "medium",
                 "high",
-                "xhigh"
+                "xhigh",
+                "max"
               ]
             }
           },
@@ -779,7 +782,8 @@
                 "low",
                 "medium",
                 "high",
-                "xhigh"
+                "xhigh",
+                "max"
               ]
             }
           },
@@ -874,7 +878,8 @@
                 "low",
                 "medium",
                 "high",
-                "xhigh"
+                "xhigh",
+                "max"
               ]
             },
             "api": "openai-completions"
@@ -1005,7 +1010,8 @@
                 "low",
                 "medium",
                 "high",
-                "xhigh"
+                "xhigh",
+                "max"
               ]
             }
           },
@@ -1191,7 +1197,8 @@
                 "low",
                 "medium",
                 "high",
-                "xhigh"
+                "xhigh",
+                "max"
               ]
             }
           },
@@ -1476,7 +1483,8 @@
                 "low",
                 "medium",
                 "high",
-                "xhigh"
+                "xhigh",
+                "max"
               ]
             }
           },
@@ -1582,12 +1590,6 @@
               "text",
               "image"
             ],
-            "cost": {
-              "input": 3,
-              "output": 7,
-              "cacheRead": 3,
-              "cacheWrite": 3
-            },
             "contextWindow": 1048576,
             "maxTokens": 384000,
             "compat": {
@@ -1739,7 +1741,8 @@
                 "low",
                 "medium",
                 "high",
-                "xhigh"
+                "xhigh",
+                "max"
               ]
             },
             "api": "openai-completions"
@@ -1971,7 +1974,8 @@
                 "low",
                 "medium",
                 "high",
-                "xhigh"
+                "xhigh",
+                "max"
               ]
             }
           },
@@ -2148,7 +2152,8 @@
                 "low",
                 "medium",
                 "high",
-                "xhigh"
+                "xhigh",
+                "max"
               ]
             }
           },

@@ -853,7 +853,7 @@ function openModelModal(idx) {
   tfLabel.style.cssText = 'display:block;font-size:10px;font-weight:600;color:var(--text2);margin:6px 0 2px';
   tfLabel.textContent = 'thinkingFormat';
   compatChecks.appendChild(tfLabel);
-  const thinkOpts = ['openai', 'openrouter', 'deepseek', 'together', 'qwen', 'qwen-chat-template', 'zai', 'max'];
+  const thinkOpts = ['openai', 'openrouter', 'deepseek', 'together', 'qwen', 'qwen-chat-template', 'zai'];
   const thinkGroup = document.createElement('div'); thinkGroup.className = 'checkbox-group';
   thinkOpts.forEach(opt => {
     const lbl = document.createElement('label');
@@ -1280,7 +1280,7 @@ function renderGeneralTab() {
   const fThink = document.createElement('div'); fThink.className = 'field';
   fThink.innerHTML = '<label>Thinking Default</label>';
   const thinkGroup = document.createElement('div'); thinkGroup.className = 'checkbox-group';
-  ['off', 'low', 'medium', 'high', 'xhigh'].forEach(opt => {
+  ['off', 'low', 'medium', 'high', 'xhigh', 'max'].forEach(opt => {
     const lbl = document.createElement('label');
     const cb = document.createElement('input'); cb.type = 'checkbox';
     cb.checked = defaults.thinkingDefault === opt;
