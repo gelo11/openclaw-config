@@ -621,7 +621,7 @@ const FALLBACK_MAX = [4096, 8192, 16384, 32768, 65536, 131072, 200000, 384000];
 
 function collectModelValues(key) {
   const vals = new Set();
-  for (const prov of config.models.providers) {
+  for (const prov of Object.values(config.models.providers)) {
     if (!prov.models) continue;
     for (const m of prov.models) {
       if (m[key]) vals.add(m[key]);
