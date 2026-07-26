@@ -23,8 +23,8 @@
         "nvidia/deepseek-ai/deepseek-v4-flash": {},
         "nvidia/deepseek-ai/deepseek-v4-pro": {},
         "nvidia/minimaxai/minimax-m3": {},
-        "nvidia/nvidia/nemotron-3-super-120b-a12b": {},
-        "nvidia/nvidia/nemotron-3-ultra-550b-a55b": {},
+        "nvidia/nemotron-3-super-120b-a12b": {},
+        "nvidia/nemotron-3-ultra-550b-a55b": {},
         "nvidia/z-ai/glm-5.2": {},
         "omniroute/af/kimi-k2.6-thinking": {},
         "omniroute/af/moonshot/kimi-k2.6": {},
@@ -42,6 +42,7 @@
         "omniroute/gemini/gemini-3.5-flash": {},
         "omniroute/glmt/glm-5.2-max": {},
         "omniroute/hcnsec/glm-5.2": {},
+        "omniroute/hf/MiniMaxAI/MiniMax-M3:novita": {},
         "omniroute/kie-ai/gpt-5-6-terra": {},
         "omniroute/kr/claude-sonnet-4.5": {},
         "omniroute/llmgateway/claude-haiku-4-5-free": {},
@@ -235,8 +236,7 @@
             "omniroute/llmgateway/claude-haiku-4-5-free",
             "omniroute/kie-ai/gpt-5-6-terra",
             "omniroute/zyloo/zyloo/gpt-4.1-free",
-            "omniroute/gemini/gemini-3.5-flash",
-            "agnes-ai-com/agnes-2.0-flash"
+            "omniroute/gemini/gemini-3.5-flash"
           ]
         }
       },
@@ -252,10 +252,9 @@
         "workspace": "/root/.openclaw/workspace-agents/analyst",
         "agentDir": "/root/.openclaw/agents/analyst/agent",
         "model": {
-          "primary": "opencode/mimo-v2.5-free",
+          "primary": "agnes-ai-com/agnes-2.0-flash",
           "fallbacks": [
-            "omniroute/opencode-zen/mimo-v2.5-free",
-            "opencode-go/mimo-v2.5"
+            "omniroute/unity2/gpt-5.6-luna"
           ]
         }
       },
@@ -803,11 +802,10 @@
             "contextWindow": 1048576,
             "maxTokens": 131072,
             "compat": {
-              "supportsReasoningEffort": true,
               "supportsUsageInStreaming": true,
-              "maxTokensField": "max_tokens"
-            },
-            "api": "openai-completions"
+              "supportsReasoningEffort": true,
+              "thinkingFormat": "zai"
+            }
           },
           {
             "id": "nvidia/z-ai/glm-5.2",
@@ -827,9 +825,8 @@
             "compat": {
               "supportsReasoningEffort": true,
               "supportsUsageInStreaming": true,
-              "maxTokensField": "max_tokens"
-            },
-            "api": "openai-completions"
+              "thinkingFormat": "zai"
+            }
           },
           {
             "id": "nvidia/minimaxai/minimax-m3",
@@ -1161,6 +1158,22 @@
             "reasoning": true,
             "compat": {
               "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "thinkingFormat": "zai"
+            }
+          },
+          {
+            "id": "hf/MiniMaxAI/MiniMax-M3:novita",
+            "name": "MiniMax M3 Hf",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 512000,
+            "maxTokens": 128000,
+            "reasoning": true,
+            "compat": {
+              "supportsReasoningEffort": true,
               "supportsUsageInStreaming": true
             }
           }
@@ -1390,7 +1403,8 @@
             "compat": {
               "supportsReasoningEffort": true,
               "supportsUsageInStreaming": true,
-              "maxTokensField": "max_tokens"
+              "maxTokensField": "max_tokens",
+              "thinkingFormat": "zai"
             }
           },
           {
@@ -1411,7 +1425,8 @@
             "compat": {
               "supportsReasoningEffort": true,
               "supportsUsageInStreaming": true,
-              "maxTokensField": "max_tokens"
+              "maxTokensField": "max_tokens",
+              "thinkingFormat": "zai"
             }
           },
           {
@@ -1690,7 +1705,8 @@
             "compat": {
               "supportsReasoningEffort": true,
               "supportsUsageInStreaming": true,
-              "maxTokensField": "max_tokens"
+              "maxTokensField": "max_tokens",
+              "thinkingFormat": "zai"
             },
             "api": "openai-completions"
           },
@@ -1947,7 +1963,12 @@
               "cacheWrite": 0
             },
             "contextWindow": 1048576,
-            "maxTokens": 131072
+            "maxTokens": 131072,
+            "compat": {
+              "supportsUsageInStreaming": true,
+              "supportsReasoningEffort": true,
+              "thinkingFormat": "zai"
+            }
           },
           {
             "id": "deepseek-v4-pro",
@@ -2125,7 +2146,12 @@
               "cacheWrite": 0
             },
             "contextWindow": 1048576,
-            "maxTokens": 131072
+            "maxTokens": 131072,
+            "compat": {
+              "supportsUsageInStreaming": true,
+              "supportsReasoningEffort": true,
+              "thinkingFormat": "zai"
+            }
           },
           {
             "id": "deepseek-v4-pro",
@@ -2372,7 +2398,8 @@
       "telegram",
       "workboard",
       "fal",
-      "codex"
+      "codex",
+      "copilot"
     ],
     "entries": {
       "opencode": {
@@ -2475,6 +2502,9 @@
         "enabled": true
       },
       "codex": {
+        "enabled": true
+      },
+      "copilot": {
         "enabled": true
       }
     },
@@ -2686,7 +2716,7 @@
   },
   "meta": {
     "lastTouchedVersion": "2026.7.1-2",
-    "lastTouchedAt": "2026-07-26T08:55:42.717Z"
+    "lastTouchedAt": "2026-07-26T14:29:50.852Z"
   },
   "bindings": [
     {

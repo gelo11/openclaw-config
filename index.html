@@ -616,6 +616,37 @@ function mkField(label, type, value, onChange) {
   return f;
 }
 
+const FALLBACK_CTX = [4096, 8192, 16384, 32768, 65536, 131072, 200000, 262144, 524288, 1048576];
+const FALLBACK_MAX = [4096, 8192, 16384, 32768, 65536, 131072, 200000, 384000];
+
+function collectModelValues(key) {
+  const vals = new Set();
+  for (const prov of config.models.providers) {
+    if (!prov.models) continue;
+    for (const m of prov.models) {
+      if (m[key]) vals.add(m[key]);
+    }
+  }
+  return [...vals].sort((a, b) => a - b);
+}
+
+function addSuggestions(container, input, key, fallback) {
+  const collected = collectModelValues(key);
+  const values = collected.length ? collected : fallback;
+  const row = document.createElement('div');
+  row.style.cssText = 'display:flex;flex-wrap:wrap;gap:4px;margin-top:4px';
+  values.forEach(v => {
+    const chip = document.createElement('span');
+    chip.textContent = v.toLocaleString();
+    chip.style.cssText = 'font-size:10px;padding:1px 6px;background:var(--bg3);border-radius:10px;color:var(--accent);cursor:pointer;user-select:none';
+    chip.onmouseenter = () => { chip.style.background = 'var(--accent)'; chip.style.color = '#fff'; };
+    chip.onmouseleave = () => { chip.style.background = 'var(--bg3)'; chip.style.color = 'var(--accent)'; };
+    chip.onclick = () => { input.value = v; input.dispatchEvent(new Event('change')); };
+    row.appendChild(chip);
+  });
+  container.appendChild(row);
+}
+
 function renderModelsList() {
   const container = document.getElementById('modelsList');
   if (!container) return;
@@ -733,6 +764,8 @@ function openModelModal(idx) {
   const row1 = document.createElement('div'); row1.className = 'field-row';
   const fCtx = mkField('Context Window', 'number', model.contextWindow || '', v => { model.contextWindow = v ? parseInt(v) : undefined; });
   const fMax = mkField('Max Tokens', 'number', model.maxTokens || '', v => { model.maxTokens = v ? parseInt(v) : undefined; });
+  addSuggestions(fCtx, fCtx.querySelector('input'), 'contextWindow', FALLBACK_CTX);
+  addSuggestions(fMax, fMax.querySelector('input'), 'maxTokens', FALLBACK_MAX);
   row1.appendChild(fCtx);
   row1.appendChild(fMax);
   body.appendChild(row1);
