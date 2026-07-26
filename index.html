@@ -369,7 +369,7 @@ async function saveConfig(silent) {
   // Strip internal fields from all provider models
   if (config.models?.providers) {
     for (const p of Object.values(config.models.providers)) {
-      if (p.models) for (const m of p.models) {
+      if (p.models && Array.isArray(p.models)) for (const m of p.models) {
         delete m._autoName;
       }
     }
@@ -419,7 +419,7 @@ function getAllModelIds() {
   const models = [];
   if (!config?.models?.providers) return models;
   for (const [pid, p] of Object.entries(config.models.providers)) {
-    if (p.models) for (const m of p.models) {
+    if (p.models && Array.isArray(p.models)) for (const m of p.models) {
       if (m.id) models.push(pid + '/' + m.id);
     }
   }
@@ -622,7 +622,7 @@ const FALLBACK_MAX = [4096, 8192, 16384, 32768, 65536, 131072, 200000, 384000];
 function collectModelValues(key) {
   const vals = new Set();
   for (const prov of Object.values(config.models.providers)) {
-    if (!prov.models) continue;
+    if (!prov.models || !Array.isArray(prov.models)) continue;
     for (const m of prov.models) {
       if (m[key]) vals.add(m[key]);
     }
@@ -652,7 +652,7 @@ function renderModelsList() {
   if (!container) return;
   container.innerHTML = '';
   const p = config.models.providers[selectedProvider];
-  if (!p.models || p.models.length === 0) {
+  if (!p || !p.models || !Array.isArray(p.models) || p.models.length === 0) {
     container.innerHTML = '<div class="text-muted">Нет моделей</div>';
     return;
   }
@@ -1040,13 +1040,14 @@ function syncDefaultsModels() {
   if (!config?.models?.providers || !config?.agents?.defaults?.models) return;
   const known = {};
   for (const [pid, p] of Object.entries(config.models.providers)) {
-    if (p.models) for (const m of p.models) {
+    if (p.models && Array.isArray(p.models)) for (const m of p.models) {
       if (m.id) known[pid + '/' + m.id] = true;
     }
   }
   const dm = config.agents.defaults.models;
+  // Remove entries without provider prefix or not in known models
   for (const key of Object.keys(dm)) {
-    if (!known[key]) delete dm[key];
+    if (!known[key] || key.indexOf('/') < 1) delete dm[key];
   }
   for (const key of Object.keys(known)) {
     if (!(key in dm)) dm[key] = {};

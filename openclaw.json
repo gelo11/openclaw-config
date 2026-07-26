@@ -2261,6 +2261,13 @@
             }
           }
         ]
+      },
+      "opencode-go": {
+        "baseUrl": "",
+        "api": "openai-completions",
+        "apiKey": "${OPENCODE_API_KEY}",
+        "timeoutSeconds": 600,
+        "models": {}
       }
     }
   },
@@ -2309,14 +2316,25 @@
   },
   "messages": {
     "tts": {
-      "auto": "tagged",
-      "provider": "xiaomi",
+      "auto": "inbound",
+      "provider": "microsoft",
       "providers": {
         "xiaomi": {
-          "apiKey": "${XIAOMI_API_KEY}",
+          "apiKey": "XIAOMI_API_KEY",
           "model": "mimo-v2.5-tts",
           "speakerVoice": "mimo_default",
           "format": "mp3"
+        },
+        "microsoft": {
+          "enabled": true,
+          "speakerVoice": "ru-RU-SvetlanaNeural",
+          "lang": "ru-RU",
+          "outputFormat": "audio-24khz-48kbitrate-mono-mp3"
+        },
+        "google": {
+          "apiKey": "${GEMINI_API_KEY}",
+          "model": "gemini-3.1-flash-tts-preview",
+          "speakerVoice": "Kore"
         }
       }
     }
@@ -2328,8 +2346,18 @@
         "enabled": true,
         "models": [
           {
+            "provider": "google",
+            "model": "gemini-3.5-flash",
+            "capabilities": [
+              "audio"
+            ]
+          },
+          {
             "provider": "mistral",
-            "model": "voxtral-mini-latest"
+            "model": "voxtral-mini-latest",
+            "capabilities": [
+              "audio"
+            ]
           }
         ]
       }
