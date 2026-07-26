@@ -695,6 +695,7 @@ function renderModelsList() {
     delBtn.onclick = (e) => {
       e.stopPropagation();
       if (!confirm(`Удалить модель "${model.id}"?`)) return;
+      if (!Array.isArray(p.models)) p.models = [];
       p.models.splice(idx, 1);
       syncDefaultsModels();
       saveConfig(true);
@@ -1021,7 +1022,7 @@ function saveModelFromModal() {
 
   // Save
   const p = config.models.providers[selectedProvider];
-  if (!p.models) p.models = [];
+  if (!p.models || !Array.isArray(p.models)) p.models = [];
 
   if (editingModelIdx === -1) {
     p.models.push(model);
