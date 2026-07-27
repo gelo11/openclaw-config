@@ -585,7 +585,24 @@ function openProviderModal(pid) {
   body.appendChild(fId);
 
   body.appendChild(mkField('Base URL', 'text', p.baseUrl || '', v => { p.baseUrl = v; }));
-  body.appendChild(mkField('API', 'text', p.api || '', v => { p.api = v; }));
+  // API — select (same static list as model modal)
+  const fApi = document.createElement('div');
+  fApi.className = 'field';
+  fApi.innerHTML = '<label>API</label>';
+  const apiOpts = [
+    '', 'openai-completions', 'openai-responses', 'openai-chatgpt-responses',
+    'anthropic-messages', 'google-generative-ai', 'google-vertex',
+    'github-copilot', 'bedrock-converse-stream', 'ollama', 'azure-openai-responses'
+  ];
+  const apiSelect = document.createElement('select');
+  apiOpts.forEach(opt => {
+    const o = document.createElement('option'); o.value = opt; o.textContent = opt || '(по умолчанию)';
+    if (opt === (p.api || '')) o.selected = true;
+    apiSelect.appendChild(o);
+  });
+  apiSelect.onchange = () => { p.api = apiSelect.value || undefined; };
+  fApi.appendChild(apiSelect);
+  body.appendChild(fApi);
   body.appendChild(mkField('API Key', 'text', p.apiKey || '', v => { p.apiKey = v; }));
   body.appendChild(mkField('Timeout (сек)', 'number', p.timeoutSeconds || 60, v => { p.timeoutSeconds = parseInt(v) || 60; }));
 
@@ -673,6 +690,32 @@ function collectModelValues(key) {
     }
   }
   return [...vals].sort((a, b) => a - b);
+}
+
+function collectModelBaseUrls() {
+  const urls = new Set();
+  if (!config?.models?.providers) return [];
+  for (const prov of Object.values(config.models.providers)) {
+    if (prov.models && Array.isArray(prov.models)) {
+      for (const m of prov.models) {
+        if (m.baseUrl) urls.add(m.baseUrl);
+      }
+    }
+  }
+  return [...urls].sort();
+}
+
+function collectModelApis() {
+  const apis = new Set();
+  if (!config?.models?.providers) return [];
+  for (const prov of Object.values(config.models.providers)) {
+    if (prov.models && Array.isArray(prov.models)) {
+      for (const m of prov.models) {
+        if (m.api) apis.add(m.api);
+      }
+    }
+  }
+  return [...apis].sort();
 }
 
 function addSuggestions(container, input, key, fallback) {
@@ -846,6 +889,19 @@ function openModelModal(idx) {
   apiSelect.onchange = () => { model.api = apiSelect.value || undefined; };
   fApi.appendChild(apiSelect);
   body.appendChild(fApi);
+
+  // Base URL
+  const fBaseUrl = document.createElement('div');
+  fBaseUrl.className = 'field';
+  fBaseUrl.innerHTML = '<label>Base URL</label>';
+  const iBaseUrl = document.createElement('input');
+  iBaseUrl.type = 'text';
+  iBaseUrl.value = model.baseUrl || '';
+  iBaseUrl.placeholder = 'https://...';
+  iBaseUrl.onchange = () => { model.baseUrl = iBaseUrl.value || undefined; };
+  iBaseUrl.oninput = () => { model.baseUrl = iBaseUrl.value || undefined; };
+  fBaseUrl.appendChild(iBaseUrl);
+  body.appendChild(fBaseUrl);
 
   // Input types — only text and image
   const fInput = document.createElement('div'); fInput.className = 'field';

@@ -14,16 +14,24 @@
         "alibaba/qwen3.7-max": {},
         "alibaba/qwen3.7-plus": {},
         "bazaarlink-ai/deepseek/deepseek-v4-flash": {},
+        "cline-cli/deepseek/deepseek-v4-flash": {},
+        "cmd-cli/MiniMaxAI/MiniMax-M3": {},
+        "cmd-cli/deepseek/deepseek-v4-pro": {},
+        "cmd-cli/xiaomi/mimo-v2.5-pro": {},
+        "cmd-cli/zai-org/GLM-5.2": {},
         "hcnsec-cn/auto": {},
         "huggingface/deepseek-ai/DeepSeek-V4-Flash:deepinfra": {},
+        "immers-cloud/immers/glm-5.2": {},
+        "immers-cloud/immers/qwen3-coder-next": {},
+        "immers-cloud/immers/qwen3.5-35b": {},
         "kiroproxy/claude-sonnet-4.5": {},
         "mistral/mistral-large-latest": {},
         "mistral/mistral-medium-3-5": {},
         "nvidia/deepseek-ai/deepseek-v4-flash": {},
         "nvidia/deepseek-ai/deepseek-v4-pro": {},
         "nvidia/minimaxai/minimax-m3": {},
-        "nvidia/nemotron-3-super-120b-a12b": {},
-        "nvidia/nemotron-3-ultra-550b-a55b": {},
+        "nvidia/nvidia/nemotron-3-super-120b-a12b": {},
+        "nvidia/nvidia/nemotron-3-ultra-550b-a55b": {},
         "nvidia/z-ai/glm-5.2": {},
         "omniroute/af/kimi-k2.6-thinking": {},
         "omniroute/af/moonshot/kimi-k2.6": {},
@@ -32,21 +40,24 @@
         "omniroute/api-orcarouter-ai/deepseek/deepseek-v4-flash": {},
         "omniroute/api-orcarouter-ai/orcarouter/free": {},
         "omniroute/api-orcarouter-ai/qwen/qwen3.5-flash": {},
+        "omniroute/api-orcarouter-ai/tencent/hy3": {},
         "omniroute/bzl/deepseek-v4-flash": {},
         "omniroute/bzl/deepseek/deepseek-v4-flash": {},
         "omniroute/bzl/deepseek/deepseek-v4-flash:free": {},
+        "omniroute/deepinfra/MiniMaxAI/MiniMax-M3": {},
+        "omniroute/deepinfra/XiaomiMiMo/MiMo-V2.5": {},
+        "omniroute/deepinfra/XiaomiMiMo/MiMo-V2.5-Pro": {},
+        "omniroute/deepinfra/deepseek-ai/DeepSeek-V4-Flash": {},
+        "omniroute/deepinfra/deepseek-ai/DeepSeek-V4-Pro": {},
+        "omniroute/deepinfra/zai-org/GLM-5.2": {},
         "omniroute/deepseek-ai/DeepSeek-V4-Flash:deepinfra": {},
         "omniroute/eurouter/glm-5.2": {},
         "omniroute/fmd/gpt-5.5": {},
         "omniroute/gemini/gemini-3.5-flash": {},
         "omniroute/glmt/glm-5.2-max": {},
-        "omniroute/deepinfra/deepseek-ai/DeepSeek-V4-Pro": {},
-        "omniroute/deepinfra/deepseek-ai/DeepSeek-V4-Flash": {},
-        "omniroute/deepinfra/zai-org/GLM-5.2": {},
-        "omniroute/deepinfra/XiaomiMiMo/MiMo-V2.5-Pro": {},
-        "omniroute/deepinfra/XiaomiMiMo/MiMo-V2.5": {},
-        "omniroute/deepinfra/MiniMaxAI/MiniMax-M3": {},
+        "omniroute/hcnsec/Kimi-K2.6": {},
         "omniroute/hcnsec/auto": {},
+        "omniroute/hcnsec/glm-5.1": {},
         "omniroute/hf/MiniMaxAI/MiniMax-M3:novita": {},
         "omniroute/kie-ai/gpt-5-6-terra": {},
         "omniroute/kr/claude-sonnet-4.5": {},
@@ -57,9 +68,9 @@
         "omniroute/nvidia/minimaxai/minimax-m3": {},
         "omniroute/nvidia/z-ai/glm-5.2": {},
         "omniroute/ofox/z-ai/glm-4.7-flash:free": {},
+        "omniroute/ogitlawb/xiaomi/mimo-v2.5-pro": {},
         "omniroute/opencode-zen/deepseek-v4-flash-free": {},
         "omniroute/opencode-zen/mimo-v2.5-free": {},
-        "omniroute/ogitlawb/xiaomi/mimo-v2.5-pro": {},
         "omniroute/opencode-zen/nemotron-3-ultra-free": {},
         "omniroute/openrouter/openrouter/free": {},
         "omniroute/pateway/deepseek-v4-pro": {},
@@ -84,13 +95,13 @@
         "opencode/mimo-v2.5-free": {},
         "qwen/deepseek-v4-flash": {},
         "qwen/deepseek-v4-pro": {},
-        "qwen/glm-5.2": {},
+        "qwen/glm-5.1": {},
         "qwen/kimi-k2.7-code": {},
-        "qwen/qwen3-coder-plus": {},
-        "qwen/qwen3.5-plus": {},
-        "qwen/qwen3.6-plus": {},
-        "qwen/qwen3.7-max": {},
-        "qwen/qwen3.7-plus": {},
+        "qwen/qwen3-coder-plus-2025-09-23": {},
+        "qwen/qwen3.5-plus-2026-04-20": {},
+        "qwen/qwen3.6-plus-2026-04-02": {},
+        "qwen/qwen3.7-max-2026-06-08": {},
+        "qwen/qwen3.7-plus-2026-05-26": {},
         "sensenova/sensenova-6.7-flash-lite": {},
         "stepfun/step-3.5-flash": {},
         "stepfun/step-3.5-flash-2603": {},
@@ -105,16 +116,12 @@
         "tokenrouter-com/z-ai/glm-5.2": {},
         "vercel-ai-gateway/deepseek/deepseek-v4-flash": {},
         "vercel-ai-gateway/deepseek/deepseek-v4-pro": {},
-        "vercel-ai-gateway/xiaomi/mimo-v2.5-pro": {},
-        "vercel-ai-gateway/xiaomi/mimo-v2.5": {},
-        "vercel-ai-gateway/poolside/laguna-s-2.1": {},
-        "vercel-ai-gateway/zai/glm-5.2": {},
+        "vercel-ai-gateway/meta/muse-spark-1.1": {},
         "vercel-ai-gateway/minimax/minimax-m3": {},
-        "cline-cli/deepseek/deepseek-v4-flash": {},
-        "cmd-cli/xiaomi/mimo-v2.5-pro": {},
-        "cmd-cli/zai-org/GLM-5.2": {},
-        "cmd-cli/deepseek/deepseek-v4-pro": {},
-        "cmd-cli/MiniMaxAI/MiniMax-M3": {}
+        "vercel-ai-gateway/poolside/laguna-s-2.1": {},
+        "vercel-ai-gateway/xiaomi/mimo-v2.5": {},
+        "vercel-ai-gateway/xiaomi/mimo-v2.5-pro": {},
+        "vercel-ai-gateway/zai/glm-5.2": {}
       },
       "model": {
         "primary": "omniroute/opencode-zen/deepseek-v4-flash-free",
@@ -124,7 +131,8 @@
           "omniroute/deepinfra/deepseek-ai/DeepSeek-V4-Flash",
           "vercel-ai-gateway/deepseek/deepseek-v4-flash",
           "cline-cli/deepseek/deepseek-v4-flash",
-          "tokenrouter-com/deepseek/deepseek-v4-flash"
+          "tokenrouter-com/deepseek/deepseek-v4-flash",
+          "opencode/deepseek-v4-flash-free"
         ]
       },
       "memorySearch": {
@@ -275,7 +283,9 @@
         "model": {
           "primary": "agnes-ai-com/agnes-2.0-flash",
           "fallbacks": [
-            "omniroute/unity2/gpt-5.6-luna"
+            "omniroute/unity2/gpt-5.6-luna",
+            "omniroute/tokenlayer/gpt-5.6-sol",
+            "sensenova/sensenova-6.7-flash-lite"
           ]
         }
       },
@@ -300,15 +310,17 @@
         "workspace": "/root/.openclaw/workspace-agents/developer",
         "agentDir": "/root/.openclaw/agents/developer/agent",
         "model": {
-          "primary": "omniroute/deepinfra/zai-org/GLM-5.2",
+          "primary": "omniroute/eurouter/glm-5.2",
           "fallbacks": [
-            "omniroute/eurouter/glm-5.2",
             "nvidia/z-ai/glm-5.2",
             "omniroute/nvidia/z-ai/glm-5.2",
-            "vercel-ai-gateway/zai/glm-5.2",
             "tokenrouter-com/z-ai/glm-5.2",
             "omniroute/glmt/glm-5.2-max",
-            "alibaba/glm-5.2"
+            "cmd-cli/zai-org/GLM-5.2",
+            "omniroute/deepinfra/zai-org/GLM-5.2",
+            "omniroute/hcnsec/glm-5.1",
+            "qwen/glm-5.1",
+            "immers-cloud/immers/glm-5.2"
           ]
         }
       },
@@ -346,11 +358,13 @@
         "model": {
           "primary": "omniroute/deepinfra/MiniMaxAI/MiniMax-M3",
           "fallbacks": [
-            "vercel-ai-gateway/minimax/minimax-m3",
             "omniroute/af/kimi-k2.6-thinking",
             "omniroute/af/moonshot/kimi-k2.6",
+            "vercel-ai-gateway/minimax/minimax-m3",
             "opencode-go/kimi-k2.6",
-            "tokenrouter-com/MiniMax-M3"
+            "omniroute/hcnsec/Kimi-K2.6",
+            "tokenrouter-com/MiniMax-M3",
+            "cmd-cli/MiniMaxAI/MiniMax-M3"
           ]
         }
       },
@@ -368,6 +382,7 @@
         "model": {
           "primary": "omniroute/api-orcarouter-ai/orcarouter/free",
           "fallbacks": [
+            "hcnsec-cn/auto",
             "omniroute/openrouter/openrouter/free",
             "cline-cli/deepseek/deepseek-v4-flash",
             "bazaarlink-ai/deepseek/deepseek-v4-flash",
@@ -398,13 +413,14 @@
         "model": {
           "primary": "omniroute/pateway/deepseek-v4-pro",
           "fallbacks": [
+            "qwen/deepseek-v4-pro",
             "omniroute/deepinfra/deepseek-ai/DeepSeek-V4-Pro",
             "vercel-ai-gateway/deepseek/deepseek-v4-pro",
             "nvidia/deepseek-ai/deepseek-v4-pro",
             "omniroute/nvidia/deepseek-ai/deepseek-v4-pro",
-            "vercel-ai-gateway/deepseek/deepseek-v4-pro",
             "opencode-go/deepseek-v4-pro",
-            "tokenrouter-com/deepseek/deepseek-v4-pro"
+            "tokenrouter-com/deepseek/deepseek-v4-pro",
+            "cmd-cli/deepseek/deepseek-v4-pro"
           ]
         }
       },
@@ -425,7 +441,8 @@
             "opencode/mimo-v2.5-free",
             "omniroute/opencode-zen/mimo-v2.5-free",
             "mistral/mistral-medium-3-5",
-            "stepfun/step-3.7-flash"
+            "stepfun/step-3.7-flash",
+            "vercel-ai-gateway/xiaomi/mimo-v2.5"
           ]
         }
       },
@@ -448,10 +465,10 @@
         "workspace": "/root/.openclaw/workspace-agents/engineer",
         "agentDir": "/root/.openclaw/agents/engineer/agent",
         "model": {
-          "primary": "vercel-ai-gateway/xiaomi/mimo-v2.5-pro",
+          "primary": "omniroute/ogitlawb/xiaomi/mimo-v2.5-pro",
           "fallbacks": [
-            "omniroute/ogitlawb/xiaomi/mimo-v2.5-pro",
             "omniroute/deepinfra/XiaomiMiMo/MiMo-V2.5-Pro",
+            "vercel-ai-gateway/xiaomi/mimo-v2.5-pro",
             "cmd-cli/xiaomi/mimo-v2.5-pro",
             "opencode-go/mimo-v2.5-pro"
           ]
@@ -1223,6 +1240,50 @@
               "supportsReasoningEffort": true,
               "supportsUsageInStreaming": true
             }
+          },
+          {
+            "id": "api-orcarouter-ai/tencent/hy3",
+            "name": "Hy3 Api Orcarouter",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 262140,
+            "maxTokens": 65536,
+            "reasoning": true,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true
+            }
+          },
+          {
+            "id": "hcnsec/glm-5.1",
+            "name": "Glm 5.1 Hcnsec",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1000000,
+            "maxTokens": 128000,
+            "reasoning": true,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "thinkingFormat": "zai"
+            }
+          },
+          {
+            "id": "hcnsec/Kimi-K2.6",
+            "name": "Kimi K2.6 Hcnsec",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 262144,
+            "maxTokens": 65536,
+            "reasoning": true,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true
+            }
           }
         ]
       },
@@ -1616,6 +1677,9 @@
         ]
       },
       "vercel-ai-gateway": {
+        "baseUrl": "https://ai-gateway.vercel.sh/v1",
+        "api": "openai-completions",
+        "apiKey": "${AI_GATEWAY_API_KEY}",
         "timeoutSeconds": 600,
         "models": [
           {
@@ -1729,6 +1793,21 @@
               "supportsUsageInStreaming": true,
               "maxTokensField": "max_tokens"
             }
+          },
+          {
+            "id": "meta/muse-spark-1.1",
+            "name": "Muse Spark 1.1",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 384000,
+            "reasoning": true,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true
+            }
           }
         ]
       },
@@ -1777,6 +1856,68 @@
             "contextWindow": 262144
           }
         ]
+      },
+      "immers-cloud": {
+        "apiKey": "${IMMERS_CLOUD_API_KEY}",
+        "timeoutSeconds": 600,
+        "models": [
+          {
+            "id": "immers/glm-5.2",
+            "name": "GLM 5.2 (Immers)",
+            "api": "openai-completions",
+            "baseUrl": "https://chat.immers.cloud/v1/endpoints/GLM-5.2-AWQ-INT4-VGALY-150506/generate",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "thinkingFormat": "zai"
+            }
+          },
+          {
+            "id": "immers/qwen3.5-35b",
+            "name": "Qwen 3.5 35B (Immers)",
+            "api": "openai-completions",
+            "baseUrl": "https://chat.immers.cloud/v1/endpoints/qwen3.5-35b-a3b/generate",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "thinkingFormat": "qwen"
+            }
+          },
+          {
+            "id": "immers/qwen3-coder-next",
+            "name": "Qwen 3 Coder Next (Immers)",
+            "api": "openai-completions",
+            "baseUrl": "https://chat.immers.cloud/v1/endpoints/qwen3-coder-next-tensor/generate",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "thinkingFormat": "qwen"
+            }
+          }
+        ],
+        "baseUrl": "https://chat.immers.cloud/v1",
+        "api": "openai-completions"
       },
       "nvidia": {
         "baseUrl": "https://integrate.api.nvidia.com/v1",
@@ -1966,9 +2107,9 @@
         "timeoutSeconds": 600,
         "models": [
           {
-            "id": "qwen3.5-plus",
+            "id": "qwen3.5-plus-2026-04-20",
             "name": "qwen3.5-plus",
-            "reasoning": false,
+            "reasoning": true,
             "input": [
               "text",
               "image"
@@ -1980,12 +2121,17 @@
               "cacheWrite": 0
             },
             "contextWindow": 1000000,
-            "maxTokens": 65536
+            "maxTokens": 65536,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "thinkingFormat": "qwen"
+            }
           },
           {
-            "id": "qwen3.6-plus",
+            "id": "qwen3.6-plus-2026-04-02",
             "name": "qwen3.6-plus",
-            "reasoning": false,
+            "reasoning": true,
             "input": [
               "text",
               "image"
@@ -1997,12 +2143,17 @@
               "cacheWrite": 0
             },
             "contextWindow": 1000000,
-            "maxTokens": 65536
+            "maxTokens": 65536,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "thinkingFormat": "qwen"
+            }
           },
           {
-            "id": "qwen3.7-plus",
+            "id": "qwen3.7-plus-2026-05-26",
             "name": "qwen3.7-plus",
-            "reasoning": false,
+            "reasoning": true,
             "input": [
               "text",
               "image"
@@ -2014,12 +2165,17 @@
               "cacheWrite": 0
             },
             "contextWindow": 1000000,
-            "maxTokens": 65536
+            "maxTokens": 65536,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "thinkingFormat": "qwen"
+            }
           },
           {
-            "id": "qwen3.7-max",
+            "id": "qwen3.7-max-2026-06-08",
             "name": "qwen3.7-max",
-            "reasoning": false,
+            "reasoning": true,
             "input": [
               "text",
               "image"
@@ -2031,10 +2187,15 @@
               "cacheWrite": 0
             },
             "contextWindow": 1048576,
-            "maxTokens": 65536
+            "maxTokens": 65536,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "thinkingFormat": "qwen"
+            }
           },
           {
-            "id": "qwen3-coder-plus",
+            "id": "qwen3-coder-plus-2025-09-23",
             "name": "qwen3-coder-plus",
             "reasoning": false,
             "input": [
@@ -2047,11 +2208,14 @@
               "cacheWrite": 0
             },
             "contextWindow": 1000000,
-            "maxTokens": 65536
+            "maxTokens": 65536,
+            "compat": {
+              "thinkingFormat": "qwen"
+            }
           },
           {
-            "id": "glm-5.2",
-            "name": "GLM-5.2",
+            "id": "glm-5.1",
+            "name": "GLM-5.1",
             "reasoning": false,
             "input": [
               "text"
