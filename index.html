@@ -1101,19 +1101,15 @@ function saveModelFromModal() {
 
 function syncDefaultsModels() {
   if (!config?.models?.providers || !config?.agents?.defaults?.models) return;
-  const known = {};
+  const dm = config.agents.defaults.models;
+  // Add models from providers that are not yet in defaults.models
   for (const [pid, p] of Object.entries(config.models.providers)) {
     if (p.models && Array.isArray(p.models)) for (const m of p.models) {
-      if (m.id) known[pid + '/' + m.id] = true;
+      if (m.id) {
+        const key = pid + '/' + m.id;
+        if (!(key in dm)) dm[key] = {};
+      }
     }
-  }
-  const dm = config.agents.defaults.models;
-  // Remove entries without provider prefix or not in known models
-  for (const key of Object.keys(dm)) {
-    if (!known[key] || key.indexOf('/') < 1) delete dm[key];
-  }
-  for (const key of Object.keys(known)) {
-    if (!(key in dm)) dm[key] = {};
   }
 }
 

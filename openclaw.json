@@ -15,7 +15,6 @@
         "alibaba/qwen3.7-plus": {},
         "bazaarlink-ai/deepseek/deepseek-v4-flash": {},
         "hcnsec-cn/auto": {},
-        "hcnsec-cn/glm-5.2": {},
         "huggingface/deepseek-ai/DeepSeek-V4-Flash:deepinfra": {},
         "kiroproxy/claude-sonnet-4.5": {},
         "mistral/mistral-large-latest": {},
@@ -23,14 +22,14 @@
         "nvidia/deepseek-ai/deepseek-v4-flash": {},
         "nvidia/deepseek-ai/deepseek-v4-pro": {},
         "nvidia/minimaxai/minimax-m3": {},
-        "nvidia/nvidia/nemotron-3-super-120b-a12b": {},
-        "nvidia/nvidia/nemotron-3-ultra-550b-a55b": {},
+        "nvidia/nemotron-3-super-120b-a12b": {},
+        "nvidia/nemotron-3-ultra-550b-a55b": {},
         "nvidia/z-ai/glm-5.2": {},
         "omniroute/af/kimi-k2.6-thinking": {},
         "omniroute/af/moonshot/kimi-k2.6": {},
         "omniroute/agnes/agnes-2.0-flash": {},
         "omniroute/alltokens/alltokens/free": {},
-        "omniroute/api-orcarouter-ai/deepseek/deepseek-v4-pro": {},
+        "omniroute/api-orcarouter-ai/deepseek/deepseek-v4-flash": {},
         "omniroute/api-orcarouter-ai/orcarouter/free": {},
         "omniroute/api-orcarouter-ai/qwen/qwen3.5-flash": {},
         "omniroute/bzl/deepseek-v4-flash": {},
@@ -41,7 +40,13 @@
         "omniroute/fmd/gpt-5.5": {},
         "omniroute/gemini/gemini-3.5-flash": {},
         "omniroute/glmt/glm-5.2-max": {},
-        "omniroute/hcnsec/glm-5.2": {},
+        "omniroute/deepinfra/deepseek-ai/DeepSeek-V4-Pro": {},
+        "omniroute/deepinfra/deepseek-ai/DeepSeek-V4-Flash": {},
+        "omniroute/deepinfra/zai-org/GLM-5.2": {},
+        "omniroute/deepinfra/XiaomiMiMo/MiMo-V2.5-Pro": {},
+        "omniroute/deepinfra/XiaomiMiMo/MiMo-V2.5": {},
+        "omniroute/deepinfra/MiniMaxAI/MiniMax-M3": {},
+        "omniroute/hcnsec/auto": {},
         "omniroute/hf/MiniMaxAI/MiniMax-M3:novita": {},
         "omniroute/kie-ai/gpt-5-6-terra": {},
         "omniroute/kr/claude-sonnet-4.5": {},
@@ -54,11 +59,10 @@
         "omniroute/ofox/z-ai/glm-4.7-flash:free": {},
         "omniroute/opencode-zen/deepseek-v4-flash-free": {},
         "omniroute/opencode-zen/mimo-v2.5-free": {},
+        "omniroute/ogitlawb/xiaomi/mimo-v2.5-pro": {},
         "omniroute/opencode-zen/nemotron-3-ultra-free": {},
         "omniroute/openrouter/openrouter/free": {},
         "omniroute/pateway/deepseek-v4-pro": {},
-        "omniroute/requesty/deepseek/deepseek-v4-pro": {},
-        "omniroute/requesty/xiaomi/mimo-v2.5-pro": {},
         "omniroute/tokenlayer/claude-sonnet-5": {},
         "omniroute/tokenlayer/gpt-5.6-sol": {},
         "omniroute/unc/Lorbus/Qwen3.6-27B-int4-AutoRound": {},
@@ -99,12 +103,26 @@
         "tokenrouter-com/qwen/qwen3.5-flash": {},
         "tokenrouter-com/x-ai/grok-4.1-fast": {},
         "tokenrouter-com/z-ai/glm-5.2": {},
-        "tokenrouter-com/z-ai/glm-5.2-free": {}
+        "vercel-ai-gateway/deepseek/deepseek-v4-flash": {},
+        "vercel-ai-gateway/deepseek/deepseek-v4-pro": {},
+        "vercel-ai-gateway/xiaomi/mimo-v2.5-pro": {},
+        "vercel-ai-gateway/xiaomi/mimo-v2.5": {},
+        "vercel-ai-gateway/poolside/laguna-s-2.1": {},
+        "vercel-ai-gateway/zai/glm-5.2": {},
+        "vercel-ai-gateway/minimax/minimax-m3": {},
+        "cline-cli/deepseek/deepseek-v4-flash": {},
+        "cmd-cli/xiaomi/mimo-v2.5-pro": {},
+        "cmd-cli/zai-org/GLM-5.2": {},
+        "cmd-cli/deepseek/deepseek-v4-pro": {},
+        "cmd-cli/MiniMaxAI/MiniMax-M3": {}
       },
       "model": {
         "primary": "omniroute/opencode-zen/deepseek-v4-flash-free",
         "fallbacks": [
+          "huggingface/deepseek-ai/DeepSeek-V4-Flash:deepinfra",
           "omniroute/bzl/deepseek-v4-flash",
+          "omniroute/deepinfra/deepseek-ai/DeepSeek-V4-Flash",
+          "vercel-ai-gateway/deepseek/deepseek-v4-flash",
           "cline-cli/deepseek/deepseek-v4-flash",
           "tokenrouter-com/deepseek/deepseek-v4-flash"
         ]
@@ -237,6 +255,7 @@
             "omniroute/zyloo/zyloo/gemini-3-pro-free",
             "omniroute/llmgateway/claude-haiku-4-5-free",
             "omniroute/kie-ai/gpt-5-6-terra",
+            "vercel-ai-gateway/poolside/laguna-s-2.1",
             "omniroute/zyloo/zyloo/gpt-4.1-free",
             "omniroute/gemini/gemini-3.5-flash"
           ]
@@ -281,12 +300,12 @@
         "workspace": "/root/.openclaw/workspace-agents/developer",
         "agentDir": "/root/.openclaw/agents/developer/agent",
         "model": {
-          "primary": "hcnsec-cn/glm-5.2",
+          "primary": "omniroute/deepinfra/zai-org/GLM-5.2",
           "fallbacks": [
-            "omniroute/hcnsec/glm-5.2",
-            "nvidia/z-ai/glm-5.2",
             "omniroute/eurouter/glm-5.2",
+            "nvidia/z-ai/glm-5.2",
             "omniroute/nvidia/z-ai/glm-5.2",
+            "vercel-ai-gateway/zai/glm-5.2",
             "tokenrouter-com/z-ai/glm-5.2",
             "omniroute/glmt/glm-5.2-max",
             "alibaba/glm-5.2"
@@ -325,8 +344,10 @@
         "workspace": "/root/.openclaw/workspace-agents/trader",
         "agentDir": "/root/.openclaw/agents/trader/agent",
         "model": {
-          "primary": "omniroute/af/kimi-k2.6-thinking",
+          "primary": "omniroute/deepinfra/MiniMaxAI/MiniMax-M3",
           "fallbacks": [
+            "vercel-ai-gateway/minimax/minimax-m3",
+            "omniroute/af/kimi-k2.6-thinking",
             "omniroute/af/moonshot/kimi-k2.6",
             "opencode-go/kimi-k2.6",
             "tokenrouter-com/MiniMax-M3"
@@ -375,14 +396,15 @@
         "workspace": "/root/.openclaw/workspace-agents/proger",
         "agentDir": "/root/.openclaw/agents/proger/agent",
         "model": {
-          "primary": "opencode-go/deepseek-v4-pro",
+          "primary": "omniroute/pateway/deepseek-v4-pro",
           "fallbacks": [
-            "omniroute/pateway/deepseek-v4-pro",
-            "alibaba/deepseek-v4-pro",
+            "omniroute/deepinfra/deepseek-ai/DeepSeek-V4-Pro",
+            "vercel-ai-gateway/deepseek/deepseek-v4-pro",
             "nvidia/deepseek-ai/deepseek-v4-pro",
             "omniroute/nvidia/deepseek-ai/deepseek-v4-pro",
-            "tokenrouter-com/deepseek/deepseek-v4-pro",
-            "omniroute/requesty/deepseek/deepseek-v4-pro"
+            "vercel-ai-gateway/deepseek/deepseek-v4-pro",
+            "opencode-go/deepseek-v4-pro",
+            "tokenrouter-com/deepseek/deepseek-v4-pro"
           ]
         }
       },
@@ -398,8 +420,9 @@
         "workspace": "/root/.openclaw/workspace-agents/signal",
         "agentDir": "/root/.openclaw/agents/signal/agent",
         "model": {
-          "primary": "opencode/mimo-v2.5-free",
+          "primary": "omniroute/deepinfra/XiaomiMiMo/MiMo-V2.5",
           "fallbacks": [
+            "opencode/mimo-v2.5-free",
             "omniroute/opencode-zen/mimo-v2.5-free",
             "mistral/mistral-medium-3-5",
             "stepfun/step-3.7-flash"
@@ -410,7 +433,7 @@
         "id": "engineer",
         "name": "engineer",
         "subagents": {
-          "model": "nvidia/deepseek-ai/deepseek-v4-pro",
+          "model": "vercel-ai-gateway/deepseek/deepseek-v4-pro",
           "allowAgents": [
             "developer",
             "proger"
@@ -425,9 +448,12 @@
         "workspace": "/root/.openclaw/workspace-agents/engineer",
         "agentDir": "/root/.openclaw/agents/engineer/agent",
         "model": {
-          "primary": "opencode-go/mimo-v2.5-pro",
+          "primary": "vercel-ai-gateway/xiaomi/mimo-v2.5-pro",
           "fallbacks": [
-            "omniroute/requesty/xiaomi/mimo-v2.5-pro"
+            "omniroute/ogitlawb/xiaomi/mimo-v2.5-pro",
+            "omniroute/deepinfra/XiaomiMiMo/MiMo-V2.5-Pro",
+            "cmd-cli/xiaomi/mimo-v2.5-pro",
+            "opencode-go/mimo-v2.5-pro"
           ]
         }
       },
@@ -488,11 +514,12 @@
             }
           },
           {
-            "id": "api-orcarouter-ai/deepseek/deepseek-v4-pro",
-            "name": "Deepseek V4 Pro orcarouter",
+            "id": "api-orcarouter-ai/deepseek/deepseek-v4-flash",
+            "name": "Deepseek V4 Flash Orcarouter",
             "reasoning": true,
             "input": [
-              "text"
+              "text",
+              "image"
             ],
             "cost": {
               "input": 0,
@@ -692,98 +719,18 @@
             }
           },
           {
-            "id": "mimo/mimo-v2.5",
-            "name": "Mimo v2.5",
-            "reasoning": true,
+            "id": "ogitlawb/xiaomi/mimo-v2.5-pro",
+            "name": "Mimo V2.5 Pro gitlawb",
             "input": [
-              "text",
-              "image"
+              "text"
             ],
-            "cost": {
-              "input": 0,
-              "output": 0,
-              "cacheRead": 0,
-              "cacheWrite": 0
-            },
             "contextWindow": 1048576,
             "maxTokens": 131072,
-            "compat": {
-              "supportsDeveloperRole": false,
-              "supportsUsageInStreaming": false,
-              "supportsStrictMode": false
-            }
-          },
-          {
-            "id": "mimo/mimo-v2.5-pro",
-            "name": "Mimo v2.5 pro",
-            "reasoning": true,
-            "input": [
-              "text"
-            ],
-            "cost": {
-              "input": 0,
-              "output": 0,
-              "cacheRead": 0,
-              "cacheWrite": 0
-            },
-            "contextWindow": 1048576,
-            "maxTokens": 131072,
-            "compat": {
-              "supportsDeveloperRole": false,
-              "supportsUsageInStreaming": false,
-              "supportsStrictMode": false
-            }
-          },
-          {
-            "id": "requesty/xiaomi/mimo-v2.5-pro",
-            "name": "Mimo v2.5 pro requesty",
-            "reasoning": true,
-            "input": [
-              "text"
-            ],
-            "cost": {
-              "input": 0,
-              "output": 0,
-              "cacheRead": 0,
-              "cacheWrite": 0
-            },
-            "contextWindow": 1048576,
-            "maxTokens": 128000,
-            "compat": {
-              "supportsDeveloperRole": false,
-              "supportsUsageInStreaming": false,
-              "supportsStrictMode": false
-            }
-          },
-          {
-            "id": "requesty/deepseek/deepseek-v4-pro",
-            "name": "Deepseek V4 Pro requesty",
-            "reasoning": true,
-            "input": [
-              "text"
-            ],
-            "cost": {
-              "input": 0,
-              "output": 0,
-              "cacheRead": 0,
-              "cacheWrite": 0
-            },
-            "contextWindow": 1048576,
-            "maxTokens": 384000,
             "compat": {
               "supportsReasoningEffort": true,
-              "supportsUsageInStreaming": true,
-              "maxTokensField": "max_tokens",
-              "supportsStrictMode": false,
-              "thinkingFormat": "deepseek",
-              "supportedReasoningEfforts": [
-                "low",
-                "medium",
-                "high",
-                "xhigh",
-                "max"
-              ]
-            }
+              "supportsUsageInStreaming": true
+            },
+            "reasoning": true
           },
           {
             "id": "glmt/glm-5.2-max",
@@ -903,6 +850,108 @@
               "thinkingFormat": "deepseek"
             },
             "api": "openai-completions"
+          },
+          {
+            "id": "deepinfra/zai-org/GLM-5.2",
+            "name": "GLM 5.2 deepinfra",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "thinkingFormat": "zai"
+            }
+          },
+          {
+            "id": "deepinfra/deepseek-ai/DeepSeek-V4-Pro",
+            "name": "DeepSeek V4 Pro deepinfra",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsUsageInStreaming": true,
+              "supportsReasoningEffort": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek",
+              "supportedReasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max"
+              ]
+            }
+          },
+          {
+            "id": "deepinfra/deepseek-ai/DeepSeek-V4-Flash",
+            "name": "DeepSeek v4 Flash deepinfra",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek"
+            }
+          },
+          {
+            "id": "deepinfra/XiaomiMiMo/MiMo-V2.5-Pro",
+            "name": "Mimo V2.5 Pro deepinfra",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true
+            },
+            "reasoning": true
+          },
+          {
+            "id": "deepinfra/XiaomiMiMo/MiMo-V2.5",
+            "name": "Mimo V2.5 deepinfra",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 131072,
+            "reasoning": true,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true
+            }
+          },
+          {
+            "id": "deepinfra/MiniMaxAI/MiniMax-M3",
+            "name": "Minima-M3 deepinfra",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 512000,
+            "maxTokens": 128000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens"
+            }
           },
           {
             "id": "opencode-zen/nemotron-3-ultra-free",
@@ -1147,18 +1196,17 @@
             }
           },
           {
-            "id": "hcnsec/glm-5.2",
-            "name": "Glm 5.2 Hcnsec",
+            "id": "hcnsec/auto",
+            "name": "Auto Hcnsec",
             "input": [
               "text"
             ],
-            "contextWindow": 1048576,
-            "maxTokens": 131072,
+            "contextWindow": 200000,
+            "maxTokens": 16384,
             "reasoning": true,
             "compat": {
               "supportsReasoningEffort": true,
-              "supportsUsageInStreaming": true,
-              "thinkingFormat": "zai"
+              "supportsUsageInStreaming": true
             }
           },
           {
@@ -1180,7 +1228,6 @@
       },
       "opencode": {
         "baseUrl": "https://opencode.ai/zen/v1",
-        "api": "openai-completions",
         "apiKey": "${OPENCODE_ZEN_API_KEY}",
         "timeoutSeconds": 600,
         "models": [
@@ -1385,28 +1432,6 @@
         "timeoutSeconds": 600,
         "models": [
           {
-            "id": "z-ai/glm-5.2-free",
-            "name": "GLM 5.2 free",
-            "reasoning": true,
-            "input": [
-              "text"
-            ],
-            "cost": {
-              "input": 0,
-              "output": 0,
-              "cacheRead": 0,
-              "cacheWrite": 0
-            },
-            "contextWindow": 1048576,
-            "maxTokens": 131072,
-            "compat": {
-              "supportsReasoningEffort": true,
-              "supportsUsageInStreaming": true,
-              "maxTokensField": "max_tokens",
-              "thinkingFormat": "zai"
-            }
-          },
-          {
             "id": "z-ai/glm-5.2",
             "name": "GLM 5.2",
             "reasoning": true,
@@ -1587,6 +1612,123 @@
             },
             "contextWindow": 256000,
             "maxTokens": 16384
+          }
+        ]
+      },
+      "vercel-ai-gateway": {
+        "timeoutSeconds": 600,
+        "models": [
+          {
+            "id": "zai/glm-5.2",
+            "name": "GLM 5.2",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "thinkingFormat": "zai"
+            }
+          },
+          {
+            "id": "deepseek/deepseek-v4-pro",
+            "name": "DeepSeek V4 Pro",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsUsageInStreaming": true,
+              "supportsReasoningEffort": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek",
+              "supportedReasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max"
+              ]
+            }
+          },
+          {
+            "id": "deepseek/deepseek-v4-flash",
+            "name": "DeepSeek v4 flash",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 384000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens",
+              "supportsStrictMode": false,
+              "thinkingFormat": "deepseek"
+            }
+          },
+          {
+            "id": "poolside/laguna-s-2.1",
+            "name": "Laguna S 2.1",
+            "reasoning": true,
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 131072
+          },
+          {
+            "id": "xiaomi/mimo-v2.5-pro",
+            "name": "Mimo V2.5 Pro",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 131072,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true
+            },
+            "reasoning": true
+          },
+          {
+            "id": "xiaomi/mimo-v2.5",
+            "name": "Mimo V2.5",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 131072,
+            "reasoning": true,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true
+            }
+          },
+          {
+            "id": "minimax/minimax-m3",
+            "name": "Minima-M3",
+            "reasoning": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 512000,
+            "maxTokens": 128000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "maxTokensField": "max_tokens"
+            }
           }
         ]
       },
@@ -2190,21 +2332,6 @@
         "timeoutSeconds": 600,
         "models": [
           {
-            "id": "glm-5.2",
-            "name": "Glm 5.2",
-            "input": [
-              "text"
-            ],
-            "contextWindow": 1047576,
-            "maxTokens": 131072,
-            "reasoning": true,
-            "compat": {
-              "supportsReasoningEffort": true,
-              "supportsUsageInStreaming": true,
-              "thinkingFormat": "zai"
-            }
-          },
-          {
             "id": "auto",
             "name": "Auto",
             "input": [
@@ -2469,7 +2596,9 @@
       "telegram",
       "workboard",
       "fal",
-      "copilot"
+      "copilot",
+      "vercel-ai-gateway",
+      "microsoft"
     ],
     "entries": {
       "opencode": {
@@ -2576,6 +2705,12 @@
       },
       "copilot": {
         "enabled": true
+      },
+      "vercel-ai-gateway": {
+        "enabled": true
+      },
+      "microsoft": {
+        "enabled": true
       }
     },
     "load": {
@@ -2634,6 +2769,10 @@
       },
       "qwen:default": {
         "provider": "qwen",
+        "mode": "api_key"
+      },
+      "vercel-ai-gateway:default": {
+        "provider": "vercel-ai-gateway",
         "mode": "api_key"
       }
     }
@@ -2778,7 +2917,7 @@
     }
   },
   "wizard": {
-    "lastRunAt": "2026-07-26T08:50:43.295Z",
+    "lastRunAt": "2026-07-27T14:12:22.010Z",
     "lastRunVersion": "2026.7.1-2",
     "lastRunCommand": "doctor",
     "lastRunMode": "local",
@@ -2786,7 +2925,7 @@
   },
   "meta": {
     "lastTouchedVersion": "2026.7.1-2",
-    "lastTouchedAt": "2026-07-26T14:29:50.852Z"
+    "lastTouchedAt": "2026-07-27T14:12:22.191Z"
   },
   "bindings": [
     {
