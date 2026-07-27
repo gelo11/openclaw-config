@@ -523,12 +523,6 @@ function renderSourceTab() {
   };
   btnRow.appendChild(saveBtn);
 
-  const refreshBtn = document.createElement('button');
-  refreshBtn.className = 'btn-outline';
-  refreshBtn.textContent = '🔄 Обновить';
-  refreshBtn.onclick = () => renderSourceTab();
-  btnRow.appendChild(refreshBtn);
-
   tab.appendChild(ta);
   tab.appendChild(btnRow);
 }
