@@ -47,8 +47,6 @@
         "omniroute/kr/claude-sonnet-4.5": {},
         "omniroute/llmgateway/claude-haiku-4-5-free": {},
         "omniroute/maxplus/claude-sonnet-5": {},
-        "omniroute/mimo/mimo-v2.5": {},
-        "omniroute/mimo/mimo-v2.5-pro": {},
         "omniroute/nvidia/deepseek-ai/deepseek-v4-flash": {},
         "omniroute/nvidia/deepseek-ai/deepseek-v4-pro": {},
         "omniroute/nvidia/minimaxai/minimax-m3": {},
@@ -72,6 +70,12 @@
         "omniroute/zm/z-ai/glm-4.7-flash-free": {},
         "omniroute/zyloo/zyloo/gemini-3-pro-free": {},
         "omniroute/zyloo/zyloo/gpt-4.1-free": {},
+        "opencode-go/deepseek-v4-flash": {},
+        "opencode-go/deepseek-v4-pro": {},
+        "opencode-go/kimi-k2.6": {},
+        "opencode-go/mimo-v2.5": {},
+        "opencode-go/mimo-v2.5-pro": {},
+        "opencode-go/qwen3.7-plus": {},
         "opencode/deepseek-v4-flash-free": {},
         "opencode/mimo-v2.5-free": {},
         "qwen/deepseek-v4-flash": {},
@@ -95,9 +99,7 @@
         "tokenrouter-com/qwen/qwen3.5-flash": {},
         "tokenrouter-com/x-ai/grok-4.1-fast": {},
         "tokenrouter-com/z-ai/glm-5.2": {},
-        "tokenrouter-com/z-ai/glm-5.2-free": {},
-        "xiaomi/mimo-v2.5": {},
-        "xiaomi/mimo-v2.5-pro": {}
+        "tokenrouter-com/z-ai/glm-5.2-free": {}
       },
       "model": {
         "primary": "omniroute/opencode-zen/deepseek-v4-flash-free",
@@ -399,8 +401,6 @@
           "primary": "opencode/mimo-v2.5-free",
           "fallbacks": [
             "omniroute/opencode-zen/mimo-v2.5-free",
-            "omniroute/mimo/mimo-v2.5",
-            "xiaomi/mimo-v2.5",
             "mistral/mistral-medium-3-5",
             "stepfun/step-3.7-flash"
           ]
@@ -425,10 +425,9 @@
         "workspace": "/root/.openclaw/workspace-agents/engineer",
         "agentDir": "/root/.openclaw/agents/engineer/agent",
         "model": {
-          "primary": "omniroute/mimo/mimo-v2.5-pro",
+          "primary": "opencode-go/mimo-v2.5-pro",
           "fallbacks": [
-            "omniroute/requesty/xiaomi/mimo-v2.5-pro",
-            "xiaomi/mimo-v2.5-pro"
+            "omniroute/requesty/xiaomi/mimo-v2.5-pro"
           ]
         }
       },
@@ -1818,47 +1817,6 @@
           }
         ]
       },
-      "xiaomi": {
-        "baseUrl": "https://api.xiaomimimo.com/v1",
-        "api": "openai-completions",
-        "apiKey": "${XIAOMI_API_KEY}",
-        "timeoutSeconds": 600,
-        "models": [
-          {
-            "id": "mimo-v2.5",
-            "name": "Xiaomi MiMo V2.5",
-            "reasoning": true,
-            "input": [
-              "text",
-              "image"
-            ],
-            "cost": {
-              "input": 0,
-              "output": 0,
-              "cacheRead": 0,
-              "cacheWrite": 0
-            },
-            "contextWindow": 1048576,
-            "maxTokens": 131072
-          },
-          {
-            "id": "mimo-v2.5-pro",
-            "name": "Xiaomi MiMo V2.5 Pro",
-            "reasoning": true,
-            "input": [
-              "text"
-            ],
-            "cost": {
-              "input": 0,
-              "output": 0,
-              "cacheRead": 0,
-              "cacheWrite": 0
-            },
-            "contextWindow": 1048576,
-            "maxTokens": 131072
-          }
-        ]
-      },
       "qwen": {
         "baseUrl": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
         "api": "openai-completions",
@@ -2263,11 +2221,103 @@
         ]
       },
       "opencode-go": {
-        "baseUrl": "",
+        "baseUrl": "https://opencode.ai/zen/go/v1",
         "api": "openai-completions",
         "apiKey": "${OPENCODE_API_KEY}",
         "timeoutSeconds": 600,
-        "models": {}
+        "models": [
+          {
+            "id": "deepseek-v4-flash",
+            "name": "Deepseek V4 Flash",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 384000,
+            "reasoning": true,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "thinkingFormat": "deepseek"
+            }
+          },
+          {
+            "id": "deepseek-v4-pro",
+            "name": "Deepseek V4 Pro",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 384000,
+            "reasoning": true,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "thinkingFormat": "deepseek"
+            }
+          },
+          {
+            "id": "mimo-v2.5-pro",
+            "name": "Mimo V2.5 Pro",
+            "input": [
+              "text"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 128000,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true
+            },
+            "reasoning": true
+          },
+          {
+            "id": "mimo-v2.5",
+            "name": "Mimo V2.5",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 128000,
+            "reasoning": true,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true
+            }
+          },
+          {
+            "id": "kimi-k2.6",
+            "name": "Kimi K2.6",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 262140,
+            "maxTokens": 65536,
+            "reasoning": true,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true
+            }
+          },
+          {
+            "id": "qwen3.7-plus",
+            "name": "Qwen3.7 Plus",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 1048576,
+            "maxTokens": 65536,
+            "reasoning": true,
+            "compat": {
+              "supportsReasoningEffort": true,
+              "supportsUsageInStreaming": true,
+              "thinkingFormat": "qwen"
+            }
+          }
+        ]
       }
     }
   },
@@ -2319,12 +2369,6 @@
       "auto": "inbound",
       "provider": "microsoft",
       "providers": {
-        "xiaomi": {
-          "apiKey": "XIAOMI_API_KEY",
-          "model": "mimo-v2.5-tts",
-          "speakerVoice": "mimo_default",
-          "format": "mp3"
-        },
         "microsoft": {
           "enabled": true,
           "speakerVoice": "ru-RU-SvetlanaNeural",
@@ -2409,7 +2453,6 @@
       "alibaba",
       "qwen",
       "stepfun",
-      "xiaomi",
       "cline-cli",
       "google",
       "opencode",
@@ -2426,7 +2469,6 @@
       "telegram",
       "workboard",
       "fal",
-      "codex",
       "copilot"
     ],
     "entries": {
@@ -2460,7 +2502,7 @@
         "enabled": true
       },
       "xiaomi": {
-        "enabled": true
+        "enabled": false
       },
       "acpx": {
         "enabled": true,
@@ -2530,7 +2572,7 @@
         "enabled": true
       },
       "codex": {
-        "enabled": true
+        "enabled": false
       },
       "copilot": {
         "enabled": true

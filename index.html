@@ -253,11 +253,13 @@ textarea { resize: vertical; min-height: 60px; font-family: monospace; font-size
       <button class="tab-btn" data-tab="agentModels" onclick="switchTab('agentModels')">📦 Модели</button>
       <button class="tab-btn" data-tab="bindings" onclick="switchTab('bindings')">🔗 Привязка</button>
       <button class="tab-btn" data-tab="general" onclick="switchTab('general')">⚙️ Общие</button>
+      <button class="tab-btn" data-tab="source" onclick="switchTab('source')">📄 Исходник</button>
     </div>
     <div class="tab-content active" id="tab-providers"></div>
     <div class="tab-content" id="tab-agentModels"></div>
     <div class="tab-content" id="tab-bindings"></div>
     <div class="tab-content" id="tab-general"></div>
+    <div class="tab-content" id="tab-source"></div>
   </div>
 </div>
 
@@ -483,6 +485,46 @@ function renderAll() {
   renderAgentModelsTab();
   renderBindingsTab();
   renderGeneralTab();
+  renderSourceTab();
+}
+
+// ===== SOURCE TAB =====
+function renderSourceTab() {
+  const tab = document.getElementById('tab-source');
+  tab.innerHTML = '';
+
+  const ta = document.createElement('textarea');
+  ta.style.cssText = 'width:100%;height:70vh;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:var(--radius);padding:12px;font-family:monospace;font-size:12px;resize:vertical';
+  ta.value = JSON.stringify(config, null, 2);
+
+  const btnRow = document.createElement('div');
+  btnRow.style.cssText = 'display:flex;gap:8px;margin-top:8px';
+
+  const saveBtn = document.createElement('button');
+  saveBtn.className = 'btn-primary';
+  saveBtn.textContent = '💾 Сохранить';
+  saveBtn.onclick = () => {
+    try {
+      const parsed = JSON.parse(ta.value);
+      Object.assign(config, parsed);
+      syncDefaultsModels();
+      saveConfig(true);
+      toast('Конфиг сохранён');
+      renderAll();
+    } catch(e) {
+      toast('Ошибка JSON: ' + e.message, 'error');
+    }
+  };
+  btnRow.appendChild(saveBtn);
+
+  const refreshBtn = document.createElement('button');
+  refreshBtn.className = 'btn-outline';
+  refreshBtn.textContent = '🔄 Обновить';
+  refreshBtn.onclick = () => renderSourceTab();
+  btnRow.appendChild(refreshBtn);
+
+  tab.appendChild(ta);
+  tab.appendChild(btnRow);
 }
 
 function updateCounts() {
@@ -580,6 +622,9 @@ function saveProviderFromModal() {
     config.models.providers[pid] = p;
     selectedProvider = pid;
   }
+
+  // Clean up empty api field
+  if (!p.api) delete p.api;
 
   closeProviderModal();
   saveConfig(true);
@@ -784,6 +829,24 @@ function openModelModal(idx) {
   fReason.appendChild(reasonLabel);
   body.appendChild(fReason);
 
+  // API — select
+  const fApi = document.createElement('div'); fApi.className = 'field';
+  fApi.innerHTML = '<label>API</label>';
+  const apiOpts = [
+    '', 'openai-completions', 'openai-responses', 'openai-chatgpt-responses',
+    'anthropic-messages', 'google-generative-ai', 'google-vertex',
+    'github-copilot', 'bedrock-converse-stream', 'ollama', 'azure-openai-responses'
+  ];
+  const apiSelect = document.createElement('select');
+  apiOpts.forEach(opt => {
+    const o = document.createElement('option'); o.value = opt; o.textContent = opt || '(по умолчанию)';
+    if (opt === (model.api || '')) o.selected = true;
+    apiSelect.appendChild(o);
+  });
+  apiSelect.onchange = () => { model.api = apiSelect.value || undefined; };
+  fApi.appendChild(apiSelect);
+  body.appendChild(fApi);
+
   // Input types — only text and image
   const fInput = document.createElement('div'); fInput.className = 'field';
   fInput.innerHTML = '<label>Input Types</label>';
@@ -832,7 +895,6 @@ function openModelModal(idx) {
   // Textarea first (auto-generated from checkboxes)
   const compatTa = document.createElement('textarea');
   compatTa.rows = 6;
-  compatTa.readOnly = true;
   compatTa.value = JSON.stringify(currentCompat, null, 2);
   fCompat.appendChild(compatTa);
 
