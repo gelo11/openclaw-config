@@ -47,6 +47,8 @@
         "omniroute/kr/claude-sonnet-4.5": {},
         "omniroute/llmgateway/claude-haiku-4-5-free": {},
         "omniroute/maxplus/claude-sonnet-5": {},
+        "omniroute/mimo/mimo-v2.5": {},
+        "omniroute/mimo/mimo-v2.5-pro": {},
         "omniroute/nvidia/deepseek-ai/deepseek-v4-flash": {},
         "omniroute/nvidia/deepseek-ai/deepseek-v4-pro": {},
         "omniroute/nvidia/minimaxai/minimax-m3": {},
@@ -1180,7 +1182,6 @@
       },
       "opencode": {
         "baseUrl": "https://opencode.ai/zen/v1",
-        "api": "openai-completions",
         "apiKey": "${OPENCODE_ZEN_API_KEY}",
         "timeoutSeconds": 600,
         "models": [

@@ -498,10 +498,16 @@ function renderSourceTab() {
   ta.value = JSON.stringify(config, null, 2);
 
   const btnRow = document.createElement('div');
-  btnRow.style.cssText = 'display:flex;gap:8px;margin-top:8px';
+  btnRow.style.cssText = 'display:flex;gap:10px;justify-content:flex-end;padding:14px 0;border-top:1px solid var(--border);margin-top:8px';
+
+  const refreshBtn = document.createElement('button');
+  refreshBtn.className = 'btn-cancel';
+  refreshBtn.textContent = '🔄 Обновить';
+  refreshBtn.onclick = () => renderSourceTab();
+  btnRow.appendChild(refreshBtn);
 
   const saveBtn = document.createElement('button');
-  saveBtn.className = 'btn-primary';
+  saveBtn.className = 'btn-save';
   saveBtn.textContent = '💾 Сохранить';
   saveBtn.onclick = () => {
     try {
